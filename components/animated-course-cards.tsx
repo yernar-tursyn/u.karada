@@ -215,11 +215,11 @@ export default function AnimatedStaticCards() {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+    <div className="grid grid-cols-5 gap-1 xs:gap-2 sm:gap-3 md:gap-4 lg:gap-5">
       {courses.map((course) => (
         <Card
           key={course.id}
-          className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer transition-all duration-700 h-[180px]"
+          className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer transition-all duration-700 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[130px] lg:h-[140px]"
           onMouseEnter={() => setHoveredCard(course.id)}
           onMouseLeave={() => setHoveredCard(null)}
           style={{
@@ -239,37 +239,43 @@ export default function AnimatedStaticCards() {
               pointerEvents: hoveredCard === course.id ? "none" : "auto",
             }}
           >
-            <CardHeader className="pb-1 pt-1">
-              <CardTitle className="text-lg font-bold">
+            <CardHeader className="pb-0 pt-0 xs:pb-0 xs:pt-1 sm:pb-1 sm:pt-1 px-1 xs:px-2 sm:px-3 md:px-4">
+              <CardTitle className="text-[8px] xs:text-xs sm:text-sm md:text-base font-bold text-center">
                 {course.title}
               </CardTitle>
             </CardHeader>
-            <CardContent className="pt-0">
-              <p className="text-sm">{course.description}</p>
+            <CardContent className="pt-0 px-1 xs:px-2 sm:px-3 md:px-4">
+              <p className="text-[6px] xs:text-[8px] sm:text-[9px] md:text-xs line-clamp-2 text-center">
+                {course.description}
+              </p>
             </CardContent>
           </div>
 
           {/* Состояние при наведении - только детали курса без заголовка */}
           <div
-            className="absolute inset-0 bg-gray-700 flex flex-col justify-center text-white p-4 z-10 transition-opacity duration-700"
+            className="absolute inset-0 bg-gray-700 flex flex-col justify-center text-white p-1 xs:p-2 sm:p-3 md:p-4 z-10 transition-opacity duration-700"
             style={{
               opacity: hoveredCard === course.id ? 1 : 0,
               pointerEvents: hoveredCard === course.id ? "auto" : "none",
             }}
           >
             <div className="animate-slide-up">
-              <p className="text-gray-300 font-bold text-base mb-2 animate-pulse-light text-center">
+              <p className="text-gray-300 font-bold text-[7px] xs:text-[9px] sm:text-xs md:text-sm mb-0.5 xs:mb-1 sm:mb-2 animate-pulse-light text-center">
                 {course.details.videoCount} видеоурока
               </p>
-              <ul className="space-y-1">
+              <ul className="space-y-0 xs:space-y-0.5 sm:space-y-1">
                 {course.details.bulletPoints.map((point, index) => (
                   <li
                     key={index}
                     className="flex items-start animate-slide-right"
                     style={{ animationDelay: `${300 + index * 200}ms` }}
                   >
-                    <span className="text-white mr-1 flex-shrink-0">•</span>
-                    <p className="text-white/90 text-xs">{point}</p>
+                    <span className="text-white mr-0.5 flex-shrink-0 text-[6px] xs:text-[7px] sm:text-[8px] md:text-xs">
+                      •
+                    </span>
+                    <p className="text-white/90 text-[5px] xs:text-[6px] sm:text-[8px] md:text-[10px] line-clamp-2">
+                      {point}
+                    </p>
                   </li>
                 ))}
               </ul>

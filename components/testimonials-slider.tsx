@@ -1,5 +1,7 @@
 "use client";
 
+import type React from "react";
+
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -73,19 +75,17 @@ const testimonials: Testimonial[] = [
 
 export default function TestimonialsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [isMobile, setIsMobile] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Определяем количество видимых слайдов в зависимости от ширины экрана
+  // Определяем только мобильный режим для скролла, но всегда показываем 3 карточки
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setVisibleCount(1);
-      } else if (window.innerWidth < 1024) {
-        setVisibleCount(2);
-      } else {
-        setVisibleCount(3);
-      }
+      setIsMobile(window.innerWidth < 640);
     };
 
     handleResize();
@@ -95,81 +95,159 @@ export default function TestimonialsSlider() {
 
   // Функции для навигации по слайдеру
   const nextSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev + 1) % (testimonials.length - visibleCount + 1)
-    );
+    setCurrentSlide((prev) => (prev + 1) % (testimonials.length - 2));
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) =>
-      prev === 0 ? testimonials.length - visibleCount : prev - 1
+      prev === 0 ? testimonials.length - 3 : prev - 1
     );
   };
 
-  // Вычисляем видимые отзывы
-  const visibleTestimonials = testimonials.slice(
-    currentSlide,
-    currentSlide + visibleCount
-  );
+  // Обработчики для скролла на мобильных устройствах
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!isMobile || !scrollContainerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseUp = () => {
+    if (!isMobile) return;
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current || !isMobile) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Скорость скролла
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!isMobile || !scrollContainerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !scrollContainerRef.current || !isMobile) return;
+    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Скорость скролла
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    if (!isMobile) return;
+    setIsDragging(false);
+  };
 
   return (
     <div className="relative">
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex gap-2">
-          <Button
-            variant="outline"
-            size="icon"
-            className="rounded-full cursor-pointer"
-            onClick={prevSlide}
-            aria-label="Предыдущий отзыв"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          <Button
-            variant="outline"
-            size="icon"
-            className="rounded-full cursor-pointer"
-            onClick={nextSlide}
-            aria-label="Следующий отзыв"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-
-      <div ref={sliderRef} className="overflow-hidden">
-        <div
-          className="flex transition-transform duration-300 ease-in-out gap-6"
-          style={{ transform: `translateX(0)` }}
-        >
-          {visibleTestimonials.map((testimonial) => (
-            <Card
-              key={testimonial.id}
-              className="flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white shadow-md rounded-lg p-6 flex flex-col"
+      <div className="flex justify-between items-center mb-2 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6">
+        {/* Кнопки навигации только для десктопа */}
+        {!isMobile && (
+          <div className="flex gap-1 xs:gap-1.5 sm:gap-2">
+            <Button
+              variant="outline"
+              size="icon"
+              className="rounded-full h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 lg:h-10 lg:w-10"
+              onClick={prevSlide}
+              aria-label="Предыдущий отзыв"
             >
-              <div className="space-y-4">
-                <p className="text-gray-700 italic">{testimonial.text}</p>
-                <div>
-                  <h4 className="font-bold text-gray-900">
-                    {testimonial.author}
-                  </h4>
-                  <p className="text-sm text-gray-500">
-                    {testimonial.position}
-                  </p>
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
+              <ChevronLeft className="h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 lg:h-6 lg:w-6" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="rounded-full h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 lg:h-10 lg:w-10"
+              onClick={nextSlide}
+              aria-label="Следующий отзыв"
+            >
+              <ChevronRight className="h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 lg:h-6 lg:w-6" />
+            </Button>
+          </div>
+        )}
       </div>
 
-      {/* Индикаторы слайдов */}
-      <div className="flex justify-center mt-6 gap-1">
-        {Array.from({ length: testimonials.length - visibleCount + 1 }).map(
-          (_, index) => (
+      {/* Десктопный слайдер */}
+      {!isMobile && (
+        <div ref={sliderRef} className="overflow-hidden">
+          <div
+            className="flex transition-transform duration-300 ease-in-out gap-2 xs:gap-3 sm:gap-4 md:gap-5 lg:gap-6"
+            style={{ transform: `translateX(-${currentSlide * (100 / 3)}%)` }}
+          >
+            {testimonials.map((testimonial) => (
+              <Card
+                key={testimonial.id}
+                className="flex-shrink-0 w-[calc(33.333%-8px)] xs:w-[calc(33.333%-12px)] sm:w-[calc(33.333%-16px)] md:w-[calc(33.333%-20px)] lg:w-[calc(33.333%-24px)] bg-white shadow-md rounded-lg p-2 xs:p-3 sm:p-4 md:p-5 lg:p-6 flex flex-col"
+              >
+                <div className="space-y-2 xs:space-y-2.5 sm:space-y-3 md:space-y-3.5 lg:space-y-4">
+                  <p className="text-gray-700 italic text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base line-clamp-6 xs:line-clamp-6 sm:line-clamp-5 md:line-clamp-none">
+                    {testimonial.text}
+                  </p>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-[9px] xs:text-[10px] sm:text-xs md:text-sm lg:text-base">
+                      {testimonial.author}
+                    </h4>
+                    <p className="text-[7px] xs:text-[8px] sm:text-[9px] md:text-xs lg:text-sm text-gray-500">
+                      {testimonial.position}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Мобильный скролл с 3 карточками */}
+      {isMobile && (
+        <div
+          ref={scrollContainerRef}
+          className="overflow-x-auto pb-4 hide-scrollbar"
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="flex gap-2 w-max">
+            {testimonials.map((testimonial) => (
+              <Card
+                key={testimonial.id}
+                className="flex-shrink-0 w-[calc(100vw/3-16px)] bg-white shadow-md rounded-lg p-2 flex flex-col"
+              >
+                <div className="space-y-1">
+                  <p className="text-gray-700 italic text-[7px] line-clamp-6">
+                    {testimonial.text}
+                  </p>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-[8px]">
+                      {testimonial.author}
+                    </h4>
+                    <p className="text-[6px] text-gray-500">
+                      {testimonial.position}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Индикаторы слайдов только для десктопа */}
+      {!isMobile && (
+        <div className="flex justify-center mt-2 xs:mt-3 sm:mt-4 md:mt-5 lg:mt-6 gap-0.5 xs:gap-0.5 sm:gap-1">
+          {Array.from({ length: testimonials.length - 2 }).map((_, index) => (
             <button
               key={index}
-              className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${
+              className={`w-1 h-1 xs:w-1.5 xs:h-1.5 sm:w-2 sm:h-2 rounded-full transition-colors cursor-pointer ${
                 index === currentSlide
                   ? "bg-blue-500"
                   : "bg-gray-300 hover:bg-gray-400"
@@ -177,9 +255,19 @@ export default function TestimonialsSlider() {
               onClick={() => setCurrentSlide(index)}
               aria-label={`Перейти к отзыву ${index + 1}`}
             />
-          )
-        )}
-      </div>
+          ))}
+        </div>
+      )}
+
+      <style jsx>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none; /* IE и Edge */
+          scrollbar-width: none; /* Firefox */
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none; /* Chrome, Safari и Opera */
+        }
+      `}</style>
     </div>
   );
 }
