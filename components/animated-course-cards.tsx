@@ -215,11 +215,11 @@ export default function AnimatedStaticCards() {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
       {courses.map((course) => (
         <Card
           key={course.id}
-          className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer transition-all duration-300 h-[180px]"
+          className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer transition-all duration-700 h-[180px]"
           onMouseEnter={() => setHoveredCard(course.id)}
           onMouseLeave={() => setHoveredCard(null)}
           style={{
@@ -232,54 +232,49 @@ export default function AnimatedStaticCards() {
           }}
         >
           {/* Обычное состояние - только заголовок и описание */}
-          {hoveredCard !== course.id && (
-            <>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xl font-bold">
-                  {course.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>{course.description}</p>
-              </CardContent>
-            </>
-          )}
+          <div
+            className="absolute inset-0 transition-opacity duration-300 flex flex-col justify-center"
+            style={{
+              opacity: hoveredCard === course.id ? 0 : 1,
+              pointerEvents: hoveredCard === course.id ? "none" : "auto",
+            }}
+          >
+            <CardHeader className="pb-1 pt-1">
+              <CardTitle className="text-lg font-bold">
+                {course.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-sm">{course.description}</p>
+            </CardContent>
+          </div>
 
           {/* Состояние при наведении - только детали курса без заголовка */}
-          {hoveredCard === course.id && (
-            <div
-              className={`absolute inset-0 bg-gradient-to-br ${course.color} flex flex-col justify-center text-white p-6 z-10 animate-fade-in`}
-            >
-              <div className="animate-slide-up">
-                <p className="text-blue-300 font-bold text-lg mb-3 animate-pulse-light text-center">
-                  {course.details.videoCount} видеоурока
-                </p>
-                <ul className="space-y-2">
-                  {course.details.bulletPoints.map((point, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start animate-slide-right"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                      <span className="text-white mr-2 flex-shrink-0">•</span>
-                      <p className="text-white/90 text-sm">{point}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Анимированные частицы */}
-              <div className="particle-1"></div>
-              <div className="particle-2"></div>
-            </div>
-          )}
-
-          {/* Анимированная рамка */}
           <div
-            className={`animated-border ${
-              hoveredCard === course.id ? "active" : ""
-            }`}
-          ></div>
+            className="absolute inset-0 bg-gray-700 flex flex-col justify-center text-white p-4 z-10 transition-opacity duration-700"
+            style={{
+              opacity: hoveredCard === course.id ? 1 : 0,
+              pointerEvents: hoveredCard === course.id ? "auto" : "none",
+            }}
+          >
+            <div className="animate-slide-up">
+              <p className="text-gray-300 font-bold text-base mb-2 animate-pulse-light text-center">
+                {course.details.videoCount} видеоурока
+              </p>
+              <ul className="space-y-1">
+                {course.details.bulletPoints.map((point, index) => (
+                  <li
+                    key={index}
+                    className="flex items-start animate-slide-right"
+                    style={{ animationDelay: `${300 + index * 200}ms` }}
+                  >
+                    <span className="text-white mr-1 flex-shrink-0">•</span>
+                    <p className="text-white/90 text-xs">{point}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </Card>
       ))}
 
@@ -295,7 +290,7 @@ export default function AnimatedStaticCards() {
 
         @keyframes slideUp {
           from {
-            transform: translateY(20px);
+            transform: translateY(30px);
             opacity: 0;
           }
           to {
@@ -328,78 +323,19 @@ export default function AnimatedStaticCards() {
         }
 
         .animate-fade-in {
-          animation: fadeIn 0.5s ease forwards;
+          animation: fadeIn 0.8s ease-in-out forwards;
         }
 
         .animate-slide-up {
-          animation: slideUp 0.5s ease forwards;
+          animation: slideUp 0.8s ease-in-out forwards;
         }
 
         .animate-slide-right {
-          animation: slideRight 0.5s ease forwards;
+          animation: slideRight 0.8s ease-in-out forwards;
         }
 
         .animate-pulse-light {
-          animation: pulseLight 2s infinite;
-        }
-
-        .animated-border {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          border: 0px solid rgba(255, 255, 255, 0);
-          border-radius: 0.75rem;
-          transition: all 0.5s ease;
-        }
-
-        .animated-border.active {
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          top: 10px;
-          left: 10px;
-          right: 10px;
-          bottom: 10px;
-        }
-
-        .particle-1,
-        .particle-2 {
-          position: absolute;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 50%;
-          opacity: 0;
-          transition: all 0.5s ease;
-        }
-
-        .particle-1 {
-          width: 80px;
-          height: 80px;
-          top: -40px;
-          right: -40px;
-          animation: pulse 3s infinite ease-in-out;
-        }
-
-        .particle-2 {
-          width: 100px;
-          height: 100px;
-          bottom: -50px;
-          left: -50px;
-          animation: pulse 4s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-            opacity: 0.6;
-          }
-          50% {
-            transform: scale(1.1);
-            opacity: 0.8;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 0.6;
-          }
+          animation: pulseLight 3s infinite;
         }
       `}</style>
     </div>

@@ -310,8 +310,45 @@ export default function Home() {
         <AnimatedCourseCards />
       </section>
 
-      {/* Who is it for & Training programs */}
+      {/* How it works */}
       <section className="container mx-auto px-4 py-12 md:py-16">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 md:mb-12 text-center">
+          Как это работает
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="flex flex-col items-center text-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="w-16 h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-4">
+              <Play className="w-8 h-8" />
+            </div>
+            <p className="font-medium text-base md:text-lg">Смотри урок.</p>
+          </div>
+          <div className="flex flex-col items-center text-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="w-16 h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-4">
+              <ListChecks className="w-8 h-8" />
+            </div>
+            <p className="font-medium text-base md:text-lg">Выполни задание</p>
+          </div>
+          <div className="flex flex-col items-center text-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="w-16 h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-4">
+              <Bot className="w-8 h-8" />
+            </div>
+            <p className="font-medium text-base md:text-lg">
+              Получи обратную связь от AI
+            </p>
+          </div>
+          <div className="flex flex-col items-center text-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="w-16 h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-4">
+              <BarChart4 className="w-8 h-8" />
+            </div>
+            <p className="font-medium text-base md:text-lg">
+              Повтори – пока на панике! зарплата в 200% больше
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Who is it for & Training programs */}
+      {/* <section className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
@@ -336,7 +373,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Images Block */}
       {/* <section className="w-full">

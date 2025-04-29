@@ -12,10 +12,10 @@ export default function PricingPlans() {
           Тарифы
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Базовый тариф */}
           <div
-            className="border border-gray-200 rounded-lg overflow-hidden relative transition-all duration-500 cursor-pointer"
+            className="border border-gray-200 rounded-lg overflow-hidden relative transition-all duration-500"
             style={{
               transform:
                 hoveredCard === 0 ? "translateY(-10px)" : "translateY(0)",
@@ -87,7 +87,7 @@ export default function PricingPlans() {
 
           {/* Оптимальный тариф */}
           <div
-            className="border border-orange-400 rounded-lg overflow-hidden relative transition-all duration-500 cursor-pointer"
+            className="border border-orange-400 rounded-lg overflow-hidden relative transition-all duration-500"
             style={{
               transform:
                 hoveredCard === 1 ? "translateY(-10px)" : "translateY(0)",
@@ -165,80 +165,6 @@ export default function PricingPlans() {
                     ? "scale(1) translate(0, 0)"
                     : "scale(0) translate(-50%, 50%)",
                 opacity: hoveredCard === 1 ? 1 : 0,
-              }}
-            ></div>
-          </div>
-
-          {/* Профессиональный тариф */}
-          <div
-            className="border border-gray-200 rounded-lg overflow-hidden relative transition-all duration-500 cursor-pointer"
-            style={{
-              transform:
-                hoveredCard === 2 ? "translateY(-10px)" : "translateY(0)",
-              boxShadow:
-                hoveredCard === 2
-                  ? "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                  : "none",
-            }}
-            onMouseEnter={() => setHoveredCard(2)}
-            onMouseLeave={() => setHoveredCard(null)}
-          >
-            <div className="p-4 sm:p-6 text-center">
-              <h3 className="text-lg sm:text-xl font-medium mb-4 sm:mb-8">
-                Профессиональный
-              </h3>
-
-              <div
-                className="mb-4 sm:mb-8 transition-all duration-500"
-                style={{
-                  transform: hoveredCard === 2 ? "scale(1.05)" : "scale(1)",
-                }}
-              >
-                <p className="text-3xl sm:text-5xl font-bold">20 000</p>
-                <p className="text-gray-500">₸/мес.</p>
-              </div>
-
-              <div className="space-y-2 text-center">
-                <p>AI тренер</p>
-                <p>12 курсов</p>
-              </div>
-            </div>
-
-            {/* Анимированная рамка */}
-            <div
-              className="absolute inset-0 border-2 border-transparent rounded-lg transition-all duration-500 pointer-events-none"
-              style={{
-                borderColor:
-                  hoveredCard === 2
-                    ? "rgba(107, 114, 128, 0.5)"
-                    : "transparent",
-                padding: hoveredCard === 2 ? "8px" : "0px",
-                top: hoveredCard === 2 ? "-8px" : "0px",
-                left: hoveredCard === 2 ? "-8px" : "0px",
-                right: hoveredCard === 2 ? "-8px" : "0px",
-                bottom: hoveredCard === 2 ? "-8px" : "0px",
-              }}
-            ></div>
-
-            {/* Анимированные частицы */}
-            <div
-              className="absolute top-0 right-0 w-20 h-20 rounded-full bg-gray-500/10 transition-all duration-700"
-              style={{
-                transform:
-                  hoveredCard === 2
-                    ? "scale(1) translate(0, 0)"
-                    : "scale(0) translate(50%, -50%)",
-                opacity: hoveredCard === 2 ? 1 : 0,
-              }}
-            ></div>
-            <div
-              className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-gray-500/5 transition-all duration-700 delay-100"
-              style={{
-                transform:
-                  hoveredCard === 2
-                    ? "scale(1) translate(0, 0)"
-                    : "scale(0) translate(-50%, 50%)",
-                opacity: hoveredCard === 2 ? 1 : 0,
               }}
             ></div>
           </div>
