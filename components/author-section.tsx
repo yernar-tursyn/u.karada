@@ -4,7 +4,7 @@ export default function AuthorSection() {
   return (
     <section className="py-6 xs:py-8 sm:py-10 md:py-12 lg:py-16 bg-gray-50">
       <div className="container mx-auto px-2 xs:px-3 sm:px-4">
-        <div className="mx-auto">
+        <div className="mx-auto flex flex-col items-center">
           <div className="flex flex-row items-center gap-2 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {/* Фото автора */}
             <div className="w-16 xs:w-24 sm:w-32 md:w-48 lg:w-64 overflow-hidden">

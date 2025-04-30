@@ -6,6 +6,8 @@ import ClientsSlider from "@/components/clients-slider";
 import AnimatedCourseCards from "@/components/animated-course-cards";
 import PricingPlans from "@/components/pricing-plans";
 import AuthorSection from "@/components/author-section";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 export default function Home() {
   const clientLogos = [
@@ -228,137 +230,184 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 lg:py-20">
-        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
-          <div className="max-w-xl">
-            <h1 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-2 sm:mb-4">
-              Прокачай свой отдел продаж с первым AI-тренером
+    <>
+      <Header />
+      <main className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 lg:py-20">
+          {/* Мобильная версия (скрыта на десктопе) */}
+          <div className="block sm:hidden mt-10">
+            {/* Заголовок на всю ширину */}
+            <h1 className="text-lg xs:text-xl font-bold text-gray-900 mb-4">
+              Прокачай свой отдел продаж с лучшим AI-тренером
             </h1>
-            <p className="text-[10px] xs:text-xs sm:text-sm md:text-base text-gray-700 mb-2 sm:mb-4">
-              Более 8000 пользователей. Тысячи проверенных заданий. 24/7
-              обратная связь.
-            </p>
-            <div className="flex xs:flex-row gap-2 sm:gap-3">
-              <Button className="bg-blue-500 hover:bg-blue-600 text-white px-2 xs:px-3 sm:px-4 md:px-6 py-0.5 xs:py-1 sm:py-2 text-[9px] xs:text-[10px] sm:text-xs md:text-sm lg:text-base rounded-md h-5 xs:h-6 sm:h-7 md:h-8 lg:h-10">
-                Попробовать бесплатно
-              </Button>
-              <Button
-                variant="outline"
-                className="border border-gray-300 text-gray-700 px-2 xs:px-3 sm:px-4 md:px-6 py-0.5 xs:py-1 sm:py-2 text-[9px] xs:text-[10px] sm:text-xs md:text-sm lg:text-base rounded-md h-5 xs:h-6 sm:h-7 md:h-8 lg:h-10"
-              >
-                Смотреть демо
-              </Button>
-            </div>
-          </div>
-          <div className="flex justify-end">
-            <div className="relative w-full max-w-[180px] xs:max-w-[220px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px] aspect-[5/4]">
-              <Image
-                src="/ai-trainer.jpeg"
-                alt="AI тренер"
-                fill
-                className="object-contain"
-                sizes="(max-width: 480px) 180px, (max-width: 640px) 220px, (max-width: 768px) 300px, (max-width: 1200px) 400px, 500px"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* How it works */}
-      <section className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
-        <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
-          Как это работает
-        </h2>
-        <div className="grid grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
-          <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-            <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-              <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-            </div>
-            <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-              Смотри урок.
-            </p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-            <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-              <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-            </div>
-            <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-              Выполни задание
-            </p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-            <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-              <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-            </div>
-            <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-              Получи обратную связь от AI
-            </p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-            <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-              <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-            </div>
-            <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-              Повтори – пока на панике! зарплата в 200% больше
-            </p>
-          </div>
-        </div>
-      </section>
+            {/* Контент под заголовком */}
+            <div className="flex items-center">
+              {/* Текст и кнопки */}
+              <div className="w-full mb-4">
+                <p className="text-[10px] xs:text-xs text-gray-700 mb-3">
+                  Более 8000 пользователей. <br />
+                  Рост ваших продаж до 34% за 7 дней
+                </p>
+                <div className="flex flex-col xs:flex-row gap-2">
+                  <Button className="bg-blue-500 hover:bg-blue-600 text-white px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6">
+                    Попробовать бесплатно
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="border border-gray-300 text-gray-700 px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6"
+                  >
+                    Смотреть демо
+                  </Button>
+                </div>
+              </div>
 
-      {/* Course cards */}
-      <section className="container mx-auto px-4 py-12 md:py-16">
-        <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
-          Курсы
-        </h2>
-        <AnimatedCourseCards />
-      </section>
+              {/* Изображение */}
+              <div className="w-full flex justify-center mt-2">
+                <div className="relative w-full max-w-[180px] xs:max-w-[220px] aspect-[5/4]">
+                  <Image
+                    src="/ai-trainer.jpeg"
+                    alt="AI тренер"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 480px) 180px, 220px"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
 
-      {/* How it works */}
-      <section className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
-        <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
-          Как это работает
-        </h2>
-        <div className="grid grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
-          <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-            <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-              <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+          {/* Десктопная версия (скрыта на мобильных) */}
+          <div className="hidden sm:grid sm:grid-cols-2 sm:gap-6 md:gap-8 sm:items-center">
+            <div className="max-w-xl">
+              <h1 className="sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
+                Прокачай свой отдел продаж с лучшим AI-тренером
+              </h1>
+              <p className="sm:text-sm md:text-base text-gray-700 mb-4">
+                8000+ пользователей | 135+ сфер бизнеса <br />
+                Рост ваших продаж до 34% за 7 дней
+              </p>
+              <div className="flex flex-row gap-3">
+                <Button className="bg-blue-500 hover:bg-blue-600 text-white sm:px-4 md:px-6 sm:py-2 sm:text-xs md:text-sm lg:text-base rounded-md sm:h-7 md:h-8 lg:h-10">
+                  Попробовать бесплатно
+                </Button>
+                <Button
+                  variant="outline"
+                  className="border border-gray-300 text-gray-700 sm:px-4 md:px-6 sm:py-2 sm:text-xs md:text-sm lg:text-base rounded-md sm:h-7 md:h-8 lg:h-10"
+                >
+                  Смотреть демо
+                </Button>
+              </div>
             </div>
-            <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-              Смотри урок.
-            </p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-            <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-              <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+            <div className="flex justify-end">
+              <div className="relative w-full sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px] aspect-[5/4]">
+                <Image
+                  src="/ai-trainer.jpeg"
+                  alt="AI тренер"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 300px, (max-width: 1200px) 400px, 500px"
+                  priority
+                />
+              </div>
             </div>
-            <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-              Выполни задание
-            </p>
           </div>
-          <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-            <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-              <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-            </div>
-            <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-              Получи обратную связь от AI
-            </p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-            <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-              <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-            </div>
-            <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-              Повтори – пока на панике! зарплата в 200% больше
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Who is it for & Training programs */}
-      {/* <section className="container mx-auto px-4 py-12 md:py-16">
+        {/* How it works */}
+        <section className="container mx-auto px-2 py-4 sm:py-6 md:py-8">
+          <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
+            Как это работает
+          </h2>
+          <div className="grid grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
+            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+              </div>
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
+                Смотри короткий видео урок
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+              </div>
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
+                Практикуйся с AI тренером
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+              </div>
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
+                Отчет по каждому менеджеру
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+              </div>
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
+                Превращай продавцов в профи
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Course cards */}
+        <section className="container mx-auto px-4 py-12 md:py-16" id="courses">
+          <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
+            Курсы
+          </h2>
+          <AnimatedCourseCards />
+        </section>
+
+        {/* How it works */}
+        <section className="container mx-auto px-2 py-4 sm:py-6 md:py-8">
+          <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
+            Почему KARADA-U?
+          </h2>
+          <div className="grid grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
+            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+              </div>
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
+                2000+ уроков <br /> 5000+ приемов
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+              </div>
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
+                8000+ пользователей <br /> 135+ сфер бизнеса
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+              </div>
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
+                Лучший AI тренер на рынке
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+              </div>
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
+                Автор: <br /> Юсуп Карада
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Who is it for & Training programs */}
+        {/* <section className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
@@ -385,8 +434,8 @@ export default function Home() {
         </div>
       </section> */}
 
-      {/* Images Block */}
-      {/* <section className="w-full">
+        {/* Images Block */}
+        {/* <section className="w-full">
         <div className="flex flex-col items-center justify-center">
           <Image
             src="/UK1.jpg"
@@ -404,23 +453,25 @@ export default function Home() {
           />
         </div>
         {/* Author Section */}
-      <AuthorSection />
+        <AuthorSection />
 
-      {/* Clients Section */}
-      <ClientsSlider images={clientLogos} />
+        {/* Clients Section */}
+        <ClientsSlider images={clientLogos} />
 
-      {/* Testimonials Section */}
-      <section className="py-12 md:py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
-            Отзывы
-          </h2>
-          <TestimonialsSlider />
-        </div>
-      </section>
+        {/* Testimonials Section */}
+        <section className="py-12 md:py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
+              Отзывы
+            </h2>
+            <TestimonialsSlider />
+          </div>
+        </section>
 
-      {/* Pricing Plans */}
-      <PricingPlans />
-    </main>
+        {/* Pricing Plans */}
+        <PricingPlans />
+      </main>
+      <Footer />
+    </>
   );
 }

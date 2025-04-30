@@ -1,8 +1,6 @@
 "use client";
 
-import type React from "react";
-
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -78,11 +76,12 @@ export default function TestimonialsSlider() {
   const [isMobile, setIsMobile] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const [isProgrammaticScroll, setIsProgrammaticScroll] = useState(false);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const visibleSlidesCount =
+    testimonials.length > 2 ? testimonials.length - 2 : testimonials.length;
 
-  // Определяем только мобильный режим для скролла, но всегда показываем 3 карточки
+  // Определяем мобильное устройство
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 640);
@@ -93,56 +92,139 @@ export default function TestimonialsSlider() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Функция для перехода к определенному слайду
+  const goToSlide = useCallback(
+    (index: number) => {
+      if (index === currentSlide) return;
+
+      setCurrentSlide(index);
+
+      if (isMobile && scrollContainerRef.current) {
+        setIsProgrammaticScroll(true);
+
+        const cards =
+          scrollContainerRef.current.querySelectorAll(".testimonial-card");
+        if (cards && cards[index]) {
+          cards[index].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+
+          // Сбрасываем флаг программного скролла после завершения анимации
+          setTimeout(() => {
+            setIsProgrammaticScroll(false);
+          }, 500);
+        }
+      }
+    },
+    [currentSlide, isMobile]
+  );
+
   // Функции для навигации по слайдеру
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % (testimonials.length - 2));
-  };
+  const nextSlide = useCallback(() => {
+    goToSlide((currentSlide + 1) % visibleSlidesCount);
+  }, [currentSlide, goToSlide, visibleSlidesCount]);
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? testimonials.length - 3 : prev - 1
+  const prevSlide = useCallback(() => {
+    goToSlide(currentSlide === 0 ? visibleSlidesCount - 1 : currentSlide - 1);
+  }, [currentSlide, goToSlide, visibleSlidesCount]);
+
+  // Настройка IntersectionObserver для отслеживания видимых карточек
+  useEffect(() => {
+    if (!isMobile || !scrollContainerRef.current || isProgrammaticScroll)
+      return;
+
+    // Отключаем предыдущий observer, если он существует
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    // Создаем новый observer
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        if (isProgrammaticScroll) return;
+
+        // Находим карточку с наибольшей видимостью
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+
+        if (visibleEntries.length > 0) {
+          // Сортируем по соотношению пересечения (от большего к меньшему)
+          visibleEntries.sort(
+            (a, b) => b.intersectionRatio - a.intersectionRatio
+          );
+
+          // Берем карточку с наибольшей видимостью
+          const mostVisibleEntry = visibleEntries[0];
+          const index = Number.parseInt(
+            mostVisibleEntry.target.getAttribute("data-index") || "0"
+          );
+
+          if (index !== currentSlide) {
+            setCurrentSlide(index);
+          }
+        }
+      },
+      {
+        root: scrollContainerRef.current,
+        threshold: 0.6, // Карточка считается видимой, если видно 60% её площади
+        rootMargin: "0px",
+      }
     );
-  };
 
-  // Обработчики для скролла на мобильных устройствах
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!isMobile || !scrollContainerRef.current) return;
-    setIsDragging(true);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-  };
+    // Наблюдаем за всеми карточками
+    const cards =
+      scrollContainerRef.current.querySelectorAll(".testimonial-card");
+    cards.forEach((card) => {
+      observerRef.current?.observe(card);
+    });
 
-  const handleMouseUp = () => {
-    if (!isMobile) return;
-    setIsDragging(false);
-  };
+    return () => {
+      observerRef.current?.disconnect();
+    };
+  }, [isMobile, currentSlide, isProgrammaticScroll]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollContainerRef.current || !isMobile) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Скорость скролла
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-  };
+  // Обработчик скролла для дополнительной синхронизации
+  useEffect(() => {
+    if (!isMobile || !scrollContainerRef.current || isProgrammaticScroll)
+      return;
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!isMobile || !scrollContainerRef.current) return;
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-  };
+    const handleScroll = () => {
+      if (isProgrammaticScroll) return;
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !scrollContainerRef.current || !isMobile) return;
-    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Скорость скролла
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-  };
+      // Дополнительная логика для обработки скролла, если IntersectionObserver не сработал
+      // Этот код будет выполняться только если пользователь скроллит вручную
+      requestAnimationFrame(() => {
+        if (scrollContainerRef.current) {
+          const container = scrollContainerRef.current;
+          const containerWidth = container.clientWidth;
+          const scrollPosition = container.scrollLeft;
+          const cardWidth =
+            container.querySelector(".testimonial-card")?.clientWidth || 0;
 
-  const handleTouchEnd = () => {
-    if (!isMobile) return;
-    setIsDragging(false);
-  };
+          if (cardWidth > 0) {
+            const centerPosition = scrollPosition + containerWidth / 2;
+            const estimatedIndex = Math.round(centerPosition / cardWidth);
+
+            if (
+              estimatedIndex >= 0 &&
+              estimatedIndex < visibleSlidesCount &&
+              estimatedIndex !== currentSlide
+            ) {
+              setCurrentSlide(estimatedIndex);
+            }
+          }
+        }
+      });
+    };
+
+    const container = scrollContainerRef.current;
+    container.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      container.removeEventListener("scroll", handleScroll);
+    };
+  }, [isMobile, currentSlide, isProgrammaticScroll, visibleSlidesCount]);
 
   return (
     <div className="relative">
@@ -207,57 +289,52 @@ export default function TestimonialsSlider() {
       {isMobile && (
         <div
           ref={scrollContainerRef}
-          className="overflow-x-auto pb-4 hide-scrollbar"
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
+          className="overflow-x-auto pb-4 hide-scrollbar snap-x snap-mandatory"
         >
           <div className="flex gap-2 w-max">
-            {testimonials.map((testimonial) => (
-              <Card
+            {testimonials.map((testimonial, index) => (
+              <div
                 key={testimonial.id}
-                className="flex-shrink-0 w-[calc(100vw/3-16px)] bg-white shadow-md rounded-lg p-2 flex flex-col"
+                className="testimonial-card flex-shrink-0 w-[calc(100vw/3-16px)] snap-center"
+                data-index={index}
               >
-                <div className="space-y-1">
-                  <p className="text-gray-700 italic text-[7px] line-clamp-6">
-                    {testimonial.text}
-                  </p>
-                  <div>
-                    <h4 className="font-bold text-gray-900 text-[8px]">
-                      {testimonial.author}
-                    </h4>
-                    <p className="text-[6px] text-gray-500">
-                      {testimonial.position}
+                <Card className="h-full bg-white shadow-md rounded-lg p-2 flex flex-col">
+                  <div className="space-y-1">
+                    <p className="text-gray-700 italic text-[7px] line-clamp-6">
+                      {testimonial.text}
                     </p>
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-[8px]">
+                        {testimonial.author}
+                      </h4>
+                      <p className="text-[6px] text-gray-500">
+                        {testimonial.position}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
       )}
 
-      {/* Индикаторы слайдов только для десктопа */}
-      {!isMobile && (
-        <div className="flex justify-center mt-2 xs:mt-3 sm:mt-4 md:mt-5 lg:mt-6 gap-0.5 xs:gap-0.5 sm:gap-1">
-          {Array.from({ length: testimonials.length - 2 }).map((_, index) => (
-            <button
-              key={index}
-              className={`w-1 h-1 xs:w-1.5 xs:h-1.5 sm:w-2 sm:h-2 rounded-full transition-colors cursor-pointer ${
-                index === currentSlide
-                  ? "bg-blue-500"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-              onClick={() => setCurrentSlide(index)}
-              aria-label={`Перейти к отзыву ${index + 1}`}
-            />
-          ))}
-        </div>
-      )}
+      {/* Индикаторы слайдов для всех устройств */}
+      <div className="flex justify-center mt-2 xs:mt-3 sm:mt-4 md:mt-5 lg:mt-6 gap-0.5 xs:gap-0.5 sm:gap-1">
+        {Array.from({ length: visibleSlidesCount }).map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-3 sm:h-3 rounded-full transition-colors cursor-pointer ${
+              index === currentSlide
+                ? "bg-blue-500"
+                : "bg-gray-300 hover:bg-gray-400"
+            }`}
+            onClick={() => goToSlide(index)}
+            aria-label={`Перейти к отзыву ${index + 1}`}
+            aria-current={index === currentSlide ? "true" : "false"}
+          />
+        ))}
+      </div>
 
       <style jsx>{`
         .hide-scrollbar {

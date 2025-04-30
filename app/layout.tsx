@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin", "cyrillic"] });
 export const metadata: Metadata = {
   title: "AI-тренер по продажам",
   description:
-    "Прокачай свой отдел продаж с первым AI-тренером в Центральной Азии",
+    "Прокачай свой отдел продаж с лучшим AI-тренером в Центральной Азии",
 };
 
 export default function RootLayout({
