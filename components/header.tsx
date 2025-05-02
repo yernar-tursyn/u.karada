@@ -102,7 +102,7 @@ export default function Header() {
               className="bg-blue-500 hover:bg-blue-600 text-white ml-2 cursor-pointer"
               onClick={openModal}
             >
-              Начать бесплатно
+              Начать
             </Button>
           </nav>
 
@@ -148,7 +148,7 @@ export default function Header() {
                 className="bg-blue-500 hover:bg-blue-600 text-white w-fit cursor-pointer"
                 onClick={openModal}
               >
-                Начать бесплатно
+                Начать
               </Button>
             </nav>
           </div>

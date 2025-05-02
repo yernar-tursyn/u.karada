@@ -221,7 +221,7 @@ export default function AnimatedStaticCards() {
       {courses.map((course) => (
         <Card
           key={course.id}
-          className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer transition-all duration-700 h-[90px] xs:h-[105px] sm:h-[120px] md:h-[130px] lg:h-[140px]"
+          className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer transition-all duration-700 h-[90px] xs:h-[105px] sm:h-[120px] md:h-[130px] lg:h-[140px] w-[220px]"
           onMouseEnter={() => !isMobile && setHoveredCard(course.id)}
           onMouseLeave={() => !isMobile && setHoveredCard(null)}
           style={{
@@ -244,16 +244,16 @@ export default function AnimatedStaticCards() {
                 !isMobile && hoveredCard === course.id ? "none" : "auto",
             }}
           >
-            <CardHeader className="pb-0 pt-0 xs:pb-0 xs:pt-1 sm:pb-1 sm:pt-1 px-1 xs:px-2 sm:px-3 md:px-4">
+            <CardHeader className="pb-0 pt-0 xs:pb-0 xs:pt-1 sm:pb-1 sm:pt-1 px-1 xs:px-2 sm:px-3 md:px-4 h-[50px]">
               <CardTitle className="font-bold text-center">
-                <span className="text-[0.35rem] xs:text-[0.6rem] sm:text-xs md:text-sm">
+                <span className="text-[0.35rem] xs:text-[0.6rem] sm:text-xs md:text-sm leading-none">
                   {course.title}
                 </span>
               </CardTitle>
             </CardHeader>
             {/* Описание отображается всегда */}
             <CardContent className="pt-0 px-1 xs:px-2 sm:px-3 md:px-4">
-              <p className="text-[0.3rem] xs:text-[0.5rem] sm:text-[0.6rem] md:text-xs text-center">
+              <p className="text-[0.3rem] xs:text-[0.5rem] sm:text-[0.6rem] md:text-xs text-center ">
                 {course.description}
               </p>
             </CardContent>

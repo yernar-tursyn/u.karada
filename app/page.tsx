@@ -263,7 +263,7 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col xs:flex-row gap-2">
                   <Button className="bg-blue-500 hover:bg-blue-600 text-white px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6 w-fit">
-                    Попробовать бесплатно
+                    Попробовать
                   </Button>
                   {/* <Button
                     variant="outline"
@@ -302,7 +302,7 @@ export default function Home() {
               </p>
               <div className="flex flex-row gap-3" onClick={openModal}>
                 <Button className="bg-blue-500 hover:bg-blue-600 text-white sm:px-4 md:px-6 sm:py-2 sm:text-xs md:text-sm lg:text-base rounded-md sm:h-7 md:h-8 lg:h-10">
-                  Попробовать бесплатно
+                  Попробовать
                 </Button>
                 <Button
                   variant="outline"
@@ -332,41 +332,108 @@ export default function Home() {
           <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
             Как это работает
           </h2>
-          <div className="grid grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[220px]">
+              <div className="w-10 h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-3">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                  ></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
-                Смотри короткий видео урок. <br /> Только суть и практика.
-                Каждый урок — конкретный навык.
+              <h3 className="text-xs sm:text-sm font-medium mb-1 text-center h-[45px]">
+                Сотрудник смотрит короткий видеоурок
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 text-center h-[45px]">
+                Только суть и практика. Каждый урок — конкретный навык.
               </p>
             </div>
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+
+            <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[220px]">
+              <div className="w-10 h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-3">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
-                Выполняешь задание — получаешь разбор от AI. <br /> AI-тренер
-                проверит ответ и даст чёткую обратную связь.
+              <h3 className="text-xs sm:text-sm font-medium mb-1 text-center h-[45px]">
+                Выполняет задание — получает разбор от AI
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 text-center h-[45px]">
+                AI-тренер проверит ответ и даст чёткую обратную связь: что
+                усилить и как исправить.
               </p>
             </div>
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+
+            <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[220px]">
+              <div className="w-10 h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-3">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                  ></path>
+                </svg>
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
-                Видишь весь процесс обучения. <br /> Вся статистика по каждому
-                сотруднику: что прошёл, как ответил, где ошибся.
+              <h3 className="text-xs sm:text-sm font-medium mb-1 text-center h-[45px]">
+                Вы видите весь процесс обучения
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 text-center h-[45px]">
+                Вся статистика по каждому сотруднику: что прошёл, как ответил,
+                где ошибся и насколько продвинулся.
               </p>
             </div>
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+
+            <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[220px]">
+              <div className="w-10 h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-3">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  ></path>
+                </svg>
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
-                Превращай продавцов в профи. <br /> Получи супер продавца в
-                короткие сроки.
+              <h3 className="text-xs sm:text-sm font-medium mb-1 text-center h-[45px]">
+                Превращайте продавцов в профи
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 text-center h-[45px]">
+                Получите супер продавца в короткие сроки.
               </p>
             </div>
           </div>

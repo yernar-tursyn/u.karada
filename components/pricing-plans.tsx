@@ -22,7 +22,7 @@ export default function PricingPlans() {
         "Обратная связь от AI-тренера",
         "Возможность докупать кредиты на проверку домашних заданий",
       ],
-      buttonText: "Попробовать бесплатно",
+      buttonText: "Попробовать",
       buttonGlow: true,
     },
     {
@@ -41,7 +41,7 @@ export default function PricingPlans() {
         { text: "Контроль доступов сотрудников", highlight: true },
         { text: "Детальная статистика обучения сотрудников", highlight: true },
       ],
-      buttonText: "Попробовать бесплатно",
+      buttonText: "Попробовать",
     },
   ];
 
