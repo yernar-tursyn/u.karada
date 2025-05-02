@@ -3,84 +3,64 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-import AmoCRMFormModal from "@/components/amocrm-form-modal";
+import AmoCRMFormModal from "./amocrm-form-modal";
 
 export default function PricingPlans() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
-  // Pricing plan data
+  // Pricing plan data - reduced to 2 plans
   const plans = [
     {
       id: 0,
-      title: "Starter",
-      badge: "Most popular",
-      price: "$7",
-      period: "Trial",
-      description:
-        "Start your $7 - 7 Day Zero Risk Trial Offer After your trial ends it will be billed as $49/month. Modify or cancel your plan anytime.",
+      title: "Соло",
+      badge: "Популярный",
+      price: "20,000₸",
+      period: "/месяц",
+      description: "Идеально для самостоятельного развития",
       features: [
-        "50 Monthly Video Credits",
-        "20+ Cinematic Styles",
-        "Access to Basic Export Settings",
-        "Standard Definition Video Output",
-        "Collaboration Tools for Team Projects",
+        "Полный доступ ко всем курсам",
+        "Обратная связь от AI-тренера",
+        "Возможность докупать кредиты на проверку домашних заданий",
       ],
-      buttonText: "Choose this plan",
+      buttonText: "Попробовать бесплатно",
       buttonGlow: true,
     },
     {
       id: 1,
-      title: "Professional",
-      badge: "Best value",
-      price: "$179",
-      period: "/month",
-      description:
-        "Save 50% when you chose annual. Billed as $1079 a year. Modify or cancel your plan anytime.",
+      title: "Команда ",
+      badge: "Стандарт",
+      price: "45,000₸",
+      period: "/месяц",
+      description: "Save 50% when you chose annual billing",
       features: [
-        { text: "400 Monthly Video Credits", highlight: true },
-        { text: "100+ Cinematic Styles", highlight: true },
-        { text: "Access to Advanced Export Settings", highlight: true },
-        { text: "High Definition Video Output", highlight: true },
-        { text: "Collaboration Tools for Team Projects", highlight: true },
+        { text: "Полный доступ ко всем курсам", highlight: true },
+        { text: "Обратная связь от AI-тренера", highlight: true },
+        {
+          text: "Возможность докупать кредиты на проверку домашних заданий",
+          highlight: true,
+        },
+        { text: "Контроль доступов сотрудников", highlight: true },
+        { text: "Детальная статистика обучения сотрудников", highlight: true },
       ],
-      buttonText: "Choose this plan",
-    },
-    {
-      id: 2,
-      title: "Enterprise",
-      price: "$399",
-      period: "/month",
-      description:
-        "Save 50% when you chose annual. Billed as $2379 a year. *Unlimited subject to fair use policy.",
-      features: [
-        "2000 Monthly Video Credits",
-        "100+ Cinematic Styles",
-        "Access to Advanced Export Settings",
-        "4K Ultra High Definition Video Output",
-        "Collaboration Tools for Team Projects",
-      ],
-      buttonText: "Choose this plan",
+      buttonText: "Попробовать бесплатно",
     },
   ];
 
-  const openModal = (planTitle: string) => {
-    setSelectedPlan(planTitle);
+  // Функция для открытия модального окна с формой
+  const openModal = () => {
     setIsModalOpen(true);
   };
 
   return (
-    <section className="py-10 sm:py-16 text-black" id="pricing">
-      <div className="container mx-auto px-4">
-        <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
-          Стоимость
-        </h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section className="py-6 sm:py-10 text-black">
+      <div className="container mx-auto px-2 sm:px-4">
+        {/* Always display cards in a row, even on mobile */}
+        <div className="max-w-3xl mx-auto grid grid-cols-2 gap-2 sm:gap-6">
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className="rounded-lg overflow-hidden relative transition-all duration-300 p-6 sm:p-8 flex flex-col border border-[#333] cursor-pointer"
+              className="rounded-lg overflow-hidden relative transition-all duration-300 p-2 sm:p-6 flex flex-col border border-[#333]"
               style={{
                 transform:
                   hoveredCard === plan.id
@@ -94,42 +74,46 @@ export default function PricingPlans() {
               onMouseEnter={() => setHoveredCard(plan.id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              {/* Card content with fixed heights for alignment */}
+              {/* Card content with reduced heights */}
               <div className="flex flex-col h-full">
-                {/* Header section - fixed height */}
-                <div className="h-16">
-                  <div className="inline-block px-4 py-1 rounded-full border border-[#333] text-sm text-[#6366f1]">
+                {/* Header section - reduced height */}
+                <div className="h-10 sm:h-16 mb-1 sm:mb-0">
+                  <div className="inline-block px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-[#333] text-[10px] sm:text-sm text-[#6366f1]">
                     {plan.title}
                   </div>
                   {plan.badge && (
-                    <div className="inline-block px-4 py-1 rounded-full border border-[#333] bg-white text-sm ml-2">
+                    <div className="inline-block px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-[#333] bg-white text-[10px] sm:text-sm ml-1 sm:ml-2">
                       {plan.badge}
                     </div>
                   )}
                 </div>
 
-                {/* Price section - fixed height */}
-                <div className="h-20">
+                {/* Price section - reduced height */}
+                <div className="h-10 sm:h-16">
                   <div className="flex items-baseline">
-                    <span className="text-6xl font-bold">{plan.price}</span>
-                    <span className="text-gray-400 ml-1">{plan.period}</span>
+                    <span className="text-xl sm:text-4xl lg:text-6xl font-bold">
+                      {plan.price}
+                    </span>
+                    <span className="text-gray-400 ml-1 text-[10px] sm:text-sm">
+                      {plan.period}
+                    </span>
                   </div>
                 </div>
 
-                {/* Description section - fixed height */}
-                <div className="h-24 text-sm text-gray-400">
+                {/* Description section - reduced height */}
+                <div className="h-8 sm:h-16 text-[10px] sm:text-sm text-gray-400">
                   <p>{plan.description}</p>
                 </div>
 
-                {/* Button section - fixed position */}
-                <div className="my-8">
+                {/* Button section - reduced margins */}
+                <div className="my-2 sm:my-6">
                   <Button
-                    className={`w-full py-6 rounded-md cursor-pointer ${
+                    onClick={openModal}
+                    className={`w-full py-1 sm:py-4 rounded-md text-[10px] sm:text-sm cursor-pointer ${
                       plan.buttonGlow
                         ? "bg-[#1a1a1a] hover:bg-[#252525] text-white relative overflow-hidden"
                         : "bg-[#6366f1] hover:bg-[#4f46e5] text-white"
                     }`}
-                    onClick={() => openModal(plan.title)}
                   >
                     {plan.buttonText}
                     {plan.buttonGlow && (
@@ -138,9 +122,9 @@ export default function PricingPlans() {
                   </Button>
                 </div>
 
-                {/* Features section - grows to fill remaining space */}
+                {/* Features section - reduced spacing */}
                 <div className="flex-grow">
-                  <ul className="space-y-4">
+                  <ul className="space-y-1 sm:space-y-4">
                     {plan.features.map((feature, index) => {
                       // Check if feature is an object with highlight property
                       const isHighlighted =
@@ -151,14 +135,18 @@ export default function PricingPlans() {
                       return (
                         <li key={index} className="flex items-start">
                           <div
-                            className={`flex-shrink-0 h-6 w-6 rounded-full ${
+                            className={`flex-shrink-0 h-3 w-3 sm:h-6 sm:w-6 rounded-full ${
                               isHighlighted ? "bg-[#6366f1]" : "bg-[#333]"
-                            } flex items-center justify-center mr-3`}
+                            } flex items-center justify-center mr-1 sm:mr-3`}
                           >
-                            <Check className="h-4 w-4 text-white" />
+                            <Check className="h-2 w-2 sm:h-4 sm:w-4 text-white" />
                           </div>
                           <span
-                            className={isHighlighted ? "px-2 py-1 rounded" : ""}
+                            className={`text-[10px] sm:text-sm ${
+                              isHighlighted
+                                ? "px-1 sm:px-2 py-0.5 sm:py-1 rounded"
+                                : ""
+                            }`}
                           >
                             {featureText}
                           </span>
@@ -173,11 +161,10 @@ export default function PricingPlans() {
         </div>
       </div>
 
-      {/* Модальное окно с формой amoCRM */}
       <AmoCRMFormModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        planTitle={selectedPlan || undefined}
+        planTitle="Бесплатный старт"
       />
     </section>
   );

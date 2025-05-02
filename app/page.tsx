@@ -400,7 +400,7 @@ export default function Home() {
                 <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
               </div>
               <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-                Автор: <br /> Юсуп Карада
+                Самая выгодная цена на рынке
               </p>
             </div>
           </div>

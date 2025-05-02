@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 
 interface CourseDetail {
-  videoCount: number;
   bulletPoints: string[];
 }
 
@@ -35,199 +34,190 @@ export default function AnimatedStaticCards() {
     {
       id: 1,
       title: "1. Основы продаж",
-      description: "Стерилиамбсоы иьаелть. Вдщеною бло",
+      description:
+        "Фундамент мышления, мотивации и системного подхода к профессии.",
       color: "from-emerald-700/90 to-emerald-900/95",
       details: {
-        videoCount: 355,
         bulletPoints: [
-          "1,000+ приемов холодного звонка любым клиентам",
-          "Продажа Блокиратору, ЛВР и ЛПР",
+          "Как полюбить дорогие продажи",
+          "Как стать профессионалом в продажах",
         ],
       },
     },
     {
       id: 2,
-      title: "2. Холодные звонки",
-      description: "Литеоренск. роивасуу. страфиматоь у перваню шоьи.",
-      color: "from-blue-700/90 to-blue-900/95",
+      title: "2. Психология покупателя",
+      description: "Понимание и забота — основа успешных продаж.",
+      color: "from-teal-600/90 to-teal-800/95",
       details: {
-        videoCount: 240,
         bulletPoints: [
-          "Скрипты для разных типов клиентов",
-          "Преодоление возражений по телефону",
+          "Как вызвать доверие любого клиента",
+          "Как продавать ценность, а не скидку",
         ],
       },
     },
     {
       id: 3,
-      title: "3. Входящие звонки",
-      description: "Как автнориат. аазкия азоана Стеркрото качтреть.",
+      title: "3. Эффективная система продаж",
+      description: "Пошаговая система, которая ведёт клиента к сделке.",
       color: "from-purple-700/90 to-purple-900/95",
       details: {
-        videoCount: 180,
         bulletPoints: [
-          "Конвертация входящих обращений в продажи",
-          "Работа с горячими лидами",
+          "Алгоритм дорогих продаж",
+          "Ключевые этапы закрытия любых сделок",
         ],
       },
     },
     {
       id: 4,
-      title: "4. Дожим и закрытие",
-      description: "Как чи кориге аззаки. по Блонах с ваии.",
+      title: "4. Переговоры и закрытие сделки",
+      description: "Проверенные скрипты и техника уверенного закрытия сделки.",
       color: "from-red-700/90 to-red-900/95",
       details: {
-        videoCount: 210,
         bulletPoints: [
-          "Техники завершения сделок",
-          "Работа с сомнениями клиента",
+          "300+ приёмов закрытия любых возражений",
+          "Правила закрытия любой сделки",
         ],
       },
     },
     {
       id: 5,
-      title: "5. Переговоры",
-      description: "Как дгенеек. поликоет, пегот, Каждиент кпиеадьа.",
-      color: "from-orange-600/90 to-orange-800/95",
+      title: "5. Входящие звонки",
+      description:
+        "Технология обработки входящих звонков с высокой конверсией.",
+      color: "from-blue-700/90 to-blue-900/95",
       details: {
-        videoCount: 185,
         bulletPoints: [
-          "Стратегии ведения сложных переговоров",
-          "Психологические приемы убеждения",
+          "Мастерство телефонных переговоров",
+          "Создание продающего скрипта",
         ],
       },
     },
     {
       id: 6,
-      title: "6. Психология покупателя",
-      description: "Как пичнот кпиеапе ните рнеапоп.",
-      color: "from-teal-600/90 to-teal-800/95",
+      title: "6. Холодные звонки",
+      description:
+        "Эффективные приёмы холодного контакта и обработки возражений.",
+      color: "from-indigo-700/90 to-indigo-900/95",
       details: {
-        videoCount: 160,
         bulletPoints: [
-          "Типы клиентов и подходы к ним",
-          "Триггеры принятия решений",
+          "1,000+ приёмов холодного звонка любым клиентам",
+          "Продажа Блокиратору, ЛВР и ЛПР",
         ],
       },
     },
     {
       id: 7,
-      title: "7. Интернет лиды",
-      description: "Перогсти. отисеаве. Хеолодик. иреч",
-      color: "from-indigo-700/90 to-indigo-900/95",
+      title: "7. Поиск клиентов",
+      description: "Построение клиентской базы для стабильных продаж.",
+      color: "from-sky-600/90 to-sky-800/95",
       details: {
-        videoCount: 195,
         bulletPoints: [
-          "15 проверенных техник закрытия",
-          "Работа с сомневающимися клиентами",
+          "Эффективный поиск клиентов",
+          "Наполнение «воронки» каждого продавца",
         ],
       },
     },
     {
       id: 8,
-      title: "8. Работа с отказами",
-      description: "Как преднотель ехаоахи.",
+      title: "8. Дожим клиентов",
+      description: "Работающие приёмы дожима и повторных продаж.",
       color: "from-slate-700/90 to-slate-900/95",
       details: {
-        videoCount: 165,
         bulletPoints: [
-          "Методики обработки возражений",
-          "Превращение возражений в преимущества",
+          "1,000+ приёмов дожима любых клиентов",
+          "Готовая программа дожима на 12 месяцев",
         ],
       },
     },
     {
       id: 9,
-      title: "9. Хемадание продавца",
-      description: "Дик ГОТ у дредаданиинаис КЩД. лоаниериис доят.",
+      title: "9. Супер сервис",
+      description: "Как стать №1 для клиента — на всех этапах взаимодействия.",
       color: "from-gray-700/90 to-gray-900/95",
       details: {
-        videoCount: 150,
         bulletPoints: [
-          "Ключевые метрики и KPI",
-          "Прогнозирование и планирование продаж",
+          "Супер сервис и забота о клиенте",
+          "Формирование лояльности клиентов",
         ],
       },
     },
     {
       id: 10,
-      title: "10. Управление отделом продаж",
-      description: "Стратегии руководства и развития команды продаж",
+      title: "10. Интернет лиды",
+      description: "Закрытие заявок из интернета с высокой конверсией.",
       color: "from-amber-700/90 to-amber-900/95",
       details: {
-        videoCount: 230,
         bulletPoints: [
-          "Построение эффективной команды",
-          "Системы мотивации и контроля",
+          "Увеличение конверсии в 10Х раз",
+          "Правила больших продаж интернет лидам",
         ],
       },
     },
     {
       id: 11,
-      title: "11. B2B продажи",
-      description: "Особенности и стратегии корпоративных продаж",
-      color: "from-sky-600/90 to-sky-800/95",
+      title: "11. Мотивированный Супер Продавец",
+      description: "Вдохновляющие стратегии для продавцов, которые не сдаются.",
+      color: "from-fuchsia-700/90 to-fuchsia-900/95",
       details: {
-        videoCount: 220,
         bulletPoints: [
-          "Особенности корпоративных продаж",
-          "Работа с тендерами и закупками",
+          "Супер мотивация на продажи",
+          "10Х рост эффективности продавца!",
         ],
       },
     },
     {
       id: 12,
-      title: "12. Аналитика продаж",
-      description: "Работа с данными для оптимизации процесса продаж",
+      title: "12. Коучинг отдела продаж",
+      description: "Практический коучинг: от возражений до дожима.",
       color: "from-rose-700/90 to-rose-900/95",
       details: {
-        videoCount: 175,
         bulletPoints: [
-          "Анализ воронки продаж",
-          "Оптимизация процессов на основе данных",
+          "Лучшие техники переговоров и дожима",
+          "Разбор возражений, кейсов и затыков",
         ],
       },
     },
     {
       id: 13,
-      title: "13. Презентационные навыки",
-      description: "Техники эффективных презентаций продуктов и услуг",
+      title: "13. Большие продажи",
+      description: "Интенсив по мощным техникам продаж и достижению целей.",
       color: "from-green-700/90 to-green-900/95",
       details: {
-        videoCount: 190,
         bulletPoints: [
-          "Структура эффективной презентации",
-          "Техники удержания внимания",
+          "Набор крутых инструментов для быстрого роста",
+          "Пошаговая система, чтобы уверенно продавать на крупные чеки и достигать планов",
         ],
       },
     },
     {
       id: 14,
-      title: "14. Удержание клиентов",
-      description: "Стратегии повышения лояльности и удержания клиентов",
-      color: "from-fuchsia-700/90 to-fuchsia-900/95",
+      title: '14. Тренинг "Дорогие продажи и Дожим"',
+      description: "Запись мощного тренинга: техники, примеры, энергия вживую.",
+      color: "from-orange-600/90 to-orange-800/95",
       details: {
-        videoCount: 145,
-        bulletPoints: ["Программы лояльности", "Допродажи и кросс-продажи"],
+        bulletPoints: [
+          "ТОПовые инструменты дорогих продаж",
+          "Алгоритм продаж и система дожима",
+        ],
       },
     },
     {
       id: 15,
-      title: "15. Автоматизация продаж",
-      description: "Внедрение CRM и других инструментов автоматизации",
+      title: "15. Мастер-классы и экспресс курсы",
+      description: "Формула мышления, которая приводит к росту дохода.",
       color: "from-zinc-700/90 to-zinc-900/95",
       details: {
-        videoCount: 170,
         bulletPoints: [
-          "Внедрение CRM-систем",
-          "Автоматизация рутинных процессов",
+          "Техники переговоров и закрытия сделок",
+          "Практические задания и инструменты",
         ],
       },
     },
   ];
 
   return (
-    <div className="grid grid-cols-5 gap-0.5 xs:gap-1 sm:gap-1.5 md:gap-2 lg:gap-3">
+    <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1 xs:gap-2 sm:gap-3 md:gap-4 lg:gap-5">
       {courses.map((course) => (
         <Card
           key={course.id}
@@ -255,14 +245,19 @@ export default function AnimatedStaticCards() {
             }}
           >
             <CardHeader className="pb-0 pt-0 xs:pb-0 xs:pt-1 sm:pb-1 sm:pt-1 px-1 xs:px-2 sm:px-3 md:px-4">
-              <CardTitle className="text-[7px] xs:text-xs sm:text-sm md:text-base font-bold text-center">
-                {course.title}
+              <CardTitle
+                className="font-bold text-center"
+                style={{ fontSize: "0.35rem" }}
+              >
+                <span className="text-[0.35rem] xs:text-[0.6rem] sm:text-xs md:text-sm">
+                  {course.title}
+                </span>
               </CardTitle>
             </CardHeader>
             {/* Описание отображается только на десктопе */}
             {!isMobile && (
               <CardContent className="pt-0 px-1 xs:px-2 sm:px-3 md:px-4">
-                <p className="text-[6px] xs:text-[8px] sm:text-[9px] md:text-xs line-clamp-2 text-center">
+                <p className="text-[0.3rem] xs:text-[0.5rem] sm:text-[0.6rem] md:text-xs line-clamp-2 text-center">
                   {course.description}
                 </p>
               </CardContent>
@@ -279,9 +274,6 @@ export default function AnimatedStaticCards() {
               }}
             >
               <div className="animate-slide-up">
-                <p className="text-gray-300 font-bold text-[7px] xs:text-[9px] sm:text-xs md:text-sm mb-0.5 xs:mb-1 sm:mb-2 animate-pulse-light text-center">
-                  {course.details.videoCount} видеоурока
-                </p>
                 <ul className="space-y-0 xs:space-y-0.5 sm:space-y-1">
                   {course.details.bulletPoints.map((point, index) => (
                     <li
@@ -289,11 +281,16 @@ export default function AnimatedStaticCards() {
                       className="flex items-start animate-slide-right"
                       style={{ animationDelay: `${300 + index * 200}ms` }}
                     >
-                      <span className="text-white mr-0.5 flex-shrink-0 text-[6px] xs:text-[7px] sm:text-[8px] md:text-xs">
+                      <span className="text-white mr-0.5 flex-shrink-0 text-[0.3rem] xs:text-[0.4rem] sm:text-[0.5rem] md:text-xs">
                         •
                       </span>
-                      <p className="text-white/90 text-[5px] xs:text-[6px] sm:text-[8px] md:text-[10px] line-clamp-2">
-                        {point}
+                      <p
+                        className="text-white/90 line-clamp-2"
+                        style={{ fontSize: "0.3rem" }}
+                      >
+                        <span className="text-[0.3rem] xs:text-[0.4rem] sm:text-[0.5rem] md:text-[0.65rem]">
+                          {point}
+                        </span>
                       </p>
                     </li>
                   ))}
