@@ -221,7 +221,7 @@ export default function AnimatedStaticCards() {
       {courses.map((course) => (
         <Card
           key={course.id}
-          className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer transition-all duration-700 h-[70px] xs:h-[85px] sm:h-[100px] md:h-[110px] lg:h-[120px]"
+          className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer transition-all duration-700 h-[90px] xs:h-[105px] sm:h-[120px] md:h-[130px] lg:h-[140px]"
           onMouseEnter={() => !isMobile && setHoveredCard(course.id)}
           onMouseLeave={() => !isMobile && setHoveredCard(null)}
           style={{
@@ -237,7 +237,7 @@ export default function AnimatedStaticCards() {
         >
           {/* Обычное состояние - только заголовок и описание */}
           <div
-            className="absolute inset-0 transition-opacity duration-300 flex flex-col justify-center"
+            className="absolute inset-0 transition-opacity duration-300 flex flex-col justify-start p-1 xs:p-2 sm:p-3"
             style={{
               opacity: !isMobile && hoveredCard === course.id ? 0 : 1,
               pointerEvents:
@@ -245,23 +245,18 @@ export default function AnimatedStaticCards() {
             }}
           >
             <CardHeader className="pb-0 pt-0 xs:pb-0 xs:pt-1 sm:pb-1 sm:pt-1 px-1 xs:px-2 sm:px-3 md:px-4">
-              <CardTitle
-                className="font-bold text-center"
-                style={{ fontSize: "0.35rem" }}
-              >
+              <CardTitle className="font-bold text-center">
                 <span className="text-[0.35rem] xs:text-[0.6rem] sm:text-xs md:text-sm">
                   {course.title}
                 </span>
               </CardTitle>
             </CardHeader>
-            {/* Описание отображается только на десктопе */}
-            {!isMobile && (
-              <CardContent className="pt-0 px-1 xs:px-2 sm:px-3 md:px-4">
-                <p className="text-[0.3rem] xs:text-[0.5rem] sm:text-[0.6rem] md:text-xs line-clamp-2 text-center">
-                  {course.description}
-                </p>
-              </CardContent>
-            )}
+            {/* Описание отображается всегда */}
+            <CardContent className="pt-0 px-1 xs:px-2 sm:px-3 md:px-4">
+              <p className="text-[0.3rem] xs:text-[0.5rem] sm:text-[0.6rem] md:text-xs text-center">
+                {course.description}
+              </p>
+            </CardContent>
           </div>
 
           {/* Состояние при наведении - только детали курса без заголовка (только для десктопа) */}
@@ -285,7 +280,7 @@ export default function AnimatedStaticCards() {
                         •
                       </span>
                       <p
-                        className="text-white/90 line-clamp-2"
+                        className="text-white/90"
                         style={{ fontSize: "0.3rem" }}
                       >
                         <span className="text-[0.3rem] xs:text-[0.4rem] sm:text-[0.5rem] md:text-[0.65rem]">

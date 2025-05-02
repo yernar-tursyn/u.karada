@@ -11,14 +11,18 @@ interface ClientsSliderProps {
 
 export default function ClientsSlider({ images }: ClientsSliderProps) {
   // Ограничиваем количество изображений для лучшей производительности
-  const displayImages = images.slice(0, 20);
+  const displayImages = images;
 
   const [slidesToShow, setSlidesToShow] = useState(4);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(0); // Отдельное состояние для активного индикатора
   const [isTransitioning, setIsTransitioning] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Настройки пагинации
+  const itemsPerPage = 10; // Количество логотипов на одной "странице"
+  const totalPages = Math.ceil(displayImages.length / itemsPerPage);
+  const [currentPage, setCurrentPage] = useState(0);
 
   // Создаем массив с дублированными элементами для бесконечной прокрутки
   const clonedImages = useCallback(() => {
@@ -54,10 +58,9 @@ export default function ClientsSlider({ images }: ClientsSliderProps) {
   // Инициализация слайдера - начинаем с клонированных элементов
   useEffect(() => {
     setCurrentSlide(slidesToShow);
-    setActiveIndex(0);
   }, [slidesToShow]);
 
-  // Обновляем активный индикатор при изменении текущего слайда
+  // Обновляем текущую страницу при изменении текущего слайда
   useEffect(() => {
     // Вычисляем реальный индекс с учетом клонированных элементов
     let realIndex = currentSlide - slidesToShow;
@@ -69,8 +72,9 @@ export default function ClientsSlider({ images }: ClientsSliderProps) {
       realIndex = realIndex % totalSlides;
     }
 
-    setActiveIndex(realIndex);
-  }, [currentSlide, slidesToShow, totalSlides]);
+    // Обновляем текущую страницу
+    setCurrentPage(Math.floor(realIndex / itemsPerPage));
+  }, [currentSlide, slidesToShow, totalSlides, itemsPerPage]);
 
   // Функция для обработки перехода к оригинальным слайдам после достижения клонов
   const handleTransitionEnd = () => {
@@ -94,13 +98,6 @@ export default function ClientsSlider({ images }: ClientsSliderProps) {
     if (!isTransitioning) {
       setIsTransitioning(true);
       setCurrentSlide((prev) => prev + 1);
-    }
-  }, [isTransitioning]);
-
-  const prevSlide = useCallback(() => {
-    if (!isTransitioning) {
-      setIsTransitioning(true);
-      setCurrentSlide((prev) => prev - 1);
     }
   }, [isTransitioning]);
 
@@ -131,12 +128,63 @@ export default function ClientsSlider({ images }: ClientsSliderProps) {
     };
   };
 
-  // Функция для перехода к конкретному слайду
-  const goToSlide = (index: number) => {
+  // Функция для перехода к конкретной странице
+  const goToPage = (pageIndex: number) => {
+    if (pageIndex < 0 || pageIndex >= totalPages) return;
+
     setIsTransitioning(true);
-    setCurrentSlide(index + slidesToShow);
+    // Переходим к первому слайду на выбранной странице
+    const firstSlideInPage = pageIndex * itemsPerPage;
+    setCurrentSlide(firstSlideInPage + slidesToShow);
   };
 
+  // Функция для перехода к следующей странице
+  const nextPage = () => {
+    goToPage((currentPage + 1) % totalPages);
+  };
+
+  // Функция для перехода к предыдущей странице
+  const prevPage = () => {
+    goToPage(currentPage === 0 ? totalPages - 1 : currentPage - 1);
+  };
+
+  // Создаем массив страниц для пагинации с учетом текущей страницы
+  const getPaginationItems = () => {
+    // Если страниц мало, показываем все
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i);
+    }
+
+    // Иначе показываем текущую страницу и несколько соседних
+    const items = [];
+
+    // Всегда показываем первую страницу
+    items.push(0);
+
+    // Если текущая страница близка к началу
+    if (currentPage <= 3) {
+      items.push(1, 2, 3, 4, "...");
+    }
+    // Если текущая страница близка к концу
+    else if (currentPage >= totalPages - 4) {
+      items.push(
+        "...",
+        totalPages - 5,
+        totalPages - 4,
+        totalPages - 3,
+        totalPages - 2
+      );
+    }
+    // Если текущая страница в середине
+    else {
+      items.push("...", currentPage - 1, currentPage, currentPage + 1, "...");
+    }
+
+    // Всегда показываем последнюю страницу
+    items.push(totalPages - 1);
+
+    return items;
+  };
   return (
     <section className="bg-white py-12 md:py-16">
       <div className="container mx-auto">
@@ -145,27 +193,6 @@ export default function ClientsSlider({ images }: ClientsSliderProps) {
         </h2>
 
         <div className="relative px-6 sm:px-10">
-          {/* Кнопки навигации */}
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white shadow-md hover:bg-gray-50 w-8 h-8 sm:w-10 sm:h-10"
-            onClick={prevSlide}
-            aria-label="Предыдущие клиенты"
-          >
-            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
-          </Button>
-
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white shadow-md hover:bg-gray-50 w-8 h-8 sm:w-10 sm:h-10"
-            onClick={nextSlide}
-            aria-label="Следующие клиенты"
-          >
-            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
-          </Button>
-
           {/* Слайдер */}
           <div ref={sliderRef} className="overflow-hidden">
             <div
@@ -194,20 +221,57 @@ export default function ClientsSlider({ images }: ClientsSliderProps) {
             </div>
           </div>
 
-          {/* Индикаторы слайдов */}
-          <div className="flex justify-center mt-4 sm:mt-6 md:mt-8 gap-1 sm:gap-2">
-            {displayImages.map((_, index) => (
-              <button
-                key={`indicator-${index}`}
-                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${
-                  activeIndex === index
-                    ? "bg-blue-500"
-                    : "bg-gray-300 hover:bg-gray-400"
-                }`}
-                onClick={() => goToSlide(index)}
-                aria-label={`Перейти к слайду ${index + 1}`}
-              />
-            ))}
+          {/* Улучшенная пагинация */}
+          <div className="flex justify-center items-center mt-6 gap-1">
+            {/* Кнопка "Предыдущая страница" */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 w-8 p-0 rounded-full"
+              onClick={prevPage}
+              disabled={totalPages <= 1}
+            >
+              <ChevronLeft className="h-4 w-4" />
+              <span className="sr-only">Предыдущая страница</span>
+            </Button>
+
+            {/* Номера страниц */}
+            <div className="flex items-center gap-1">
+              {getPaginationItems().map((item, index) =>
+                item === "..." ? (
+                  <span key={`ellipsis-${index}`} className="px-1">
+                    ...
+                  </span>
+                ) : (
+                  <Button
+                    key={`page-${item}`}
+                    variant={currentPage === item ? "default" : "outline"}
+                    size="sm"
+                    className="h-8 w-8 p-0"
+                    onClick={() => goToPage(item as number)}
+                  >
+                    {(item as number) + 1}
+                  </Button>
+                )
+              )}
+            </div>
+
+            {/* Кнопка "Следующая страница" */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 w-8 p-0 rounded-full"
+              onClick={nextPage}
+              disabled={totalPages <= 1}
+            >
+              <ChevronRight className="h-4 w-4" />
+              <span className="sr-only">Следующая страница</span>
+            </Button>
+          </div>
+
+          {/* Информация о текущей странице */}
+          <div className="text-center text-sm text-gray-500 mt-2">
+            Страница {currentPage + 1} из {totalPages}
           </div>
         </div>
       </div>

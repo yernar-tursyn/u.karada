@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Play, ListChecks, Bot, BarChart4 } from "lucide-react";
@@ -8,9 +10,69 @@ import PricingPlans from "@/components/pricing-plans";
 import AuthorSection from "@/components/author-section";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { useState } from "react";
+import AmoCRMFormModal from "@/components/amocrm-form-modal";
 
 export default function Home() {
   const clientLogos = [
+    // n серия
+    "/clients/n001.jpg",
+    "/clients/n002.jpg",
+    "/clients/n003.jpg",
+    "/clients/n004.jpg",
+    "/clients/n005.jpg",
+    "/clients/n006.jpg",
+    "/clients/n007.jpg",
+    "/clients/n008.jpg",
+    "/clients/n009.jpg",
+    "/clients/n010.jpg",
+    "/clients/n011.jpg",
+    "/clients/n012.jpg",
+    "/clients/n013.jpg",
+    "/clients/n014.jpg",
+    "/clients/n015.jpg",
+    "/clients/n016.jpg",
+    "/clients/n017.jpg",
+    "/clients/n018.jpg",
+
+    // N серия
+    "/clients/N1.jpg",
+    "/clients/N2.jpg",
+    "/clients/N3.jpg",
+    "/clients/N4.jpg",
+    "/clients/N5.jpg",
+    "/clients/N6.jpg",
+    "/clients/N7.jpg",
+    "/clients/N8.jpg",
+    "/clients/N9.jpg",
+    "/clients/N10.jpg",
+    "/clients/N11.jpg",
+    "/clients/N12.jpg",
+    "/clients/N13.jpg",
+    "/clients/N14.jpg",
+    "/clients/N15.jpg",
+    "/clients/N16.jpg",
+    "/clients/N17.jpg",
+    "/clients/N18.jpg",
+    "/clients/N19.jpg",
+    "/clients/N20.jpg",
+    "/clients/N21.jpg",
+    "/clients/N22.jpg",
+    "/clients/N23.jpg",
+    "/clients/N24.jpg",
+    "/clients/N25.jpg",
+    "/clients/N26.jpg",
+    "/clients/N27.jpg",
+    "/clients/N28.jpg",
+    "/clients/N29.jpg",
+    "/clients/N30.jpg",
+    "/clients/N31.jpg",
+    "/clients/N32.jpg",
+    "/clients/N33.jpg",
+    "/clients/N34.jpg",
+    "/clients/N35.jpg",
+    "/clients/N36.jpg",
+
     // PNG файлы
     "/clients/15v.png",
     "/clients/16v.png",
@@ -169,65 +231,14 @@ export default function Home() {
     "/clients/m28.jpg",
     "/clients/m29.jpg",
     "/clients/m30.jpg",
-
-    // n серия
-    "/clients/n001.jpg",
-    "/clients/n002.jpg",
-    "/clients/n003.jpg",
-    "/clients/n004.jpg",
-    "/clients/n005.jpg",
-    "/clients/n006.jpg",
-    "/clients/n007.jpg",
-    "/clients/n008.jpg",
-    "/clients/n009.jpg",
-    "/clients/n010.jpg",
-    "/clients/n011.jpg",
-    "/clients/n012.jpg",
-    "/clients/n013.jpg",
-    "/clients/n014.jpg",
-    "/clients/n015.jpg",
-    "/clients/n016.jpg",
-    "/clients/n017.jpg",
-    "/clients/n018.jpg",
-
-    // N серия
-    "/clients/N1.jpg",
-    "/clients/N2.jpg",
-    "/clients/N3.jpg",
-    "/clients/N4.jpg",
-    "/clients/N5.jpg",
-    "/clients/N6.jpg",
-    "/clients/N7.jpg",
-    "/clients/N8.jpg",
-    "/clients/N9.jpg",
-    "/clients/N10.jpg",
-    "/clients/N11.jpg",
-    "/clients/N12.jpg",
-    "/clients/N13.jpg",
-    "/clients/N14.jpg",
-    "/clients/N15.jpg",
-    "/clients/N16.jpg",
-    "/clients/N17.jpg",
-    "/clients/N18.jpg",
-    "/clients/N19.jpg",
-    "/clients/N20.jpg",
-    "/clients/N21.jpg",
-    "/clients/N22.jpg",
-    "/clients/N23.jpg",
-    "/clients/N24.jpg",
-    "/clients/N25.jpg",
-    "/clients/N26.jpg",
-    "/clients/N27.jpg",
-    "/clients/N28.jpg",
-    "/clients/N29.jpg",
-    "/clients/N30.jpg",
-    "/clients/N31.jpg",
-    "/clients/N32.jpg",
-    "/clients/N33.jpg",
-    "/clients/N34.jpg",
-    "/clients/N35.jpg",
-    "/clients/N36.jpg",
   ];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Функция для открытия модального окна с формой
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <>
@@ -251,15 +262,15 @@ export default function Home() {
                   Рост ваших продаж до 34% за 7 дней
                 </p>
                 <div className="flex flex-col xs:flex-row gap-2">
-                  <Button className="bg-blue-500 hover:bg-blue-600 text-white px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6">
+                  <Button className="bg-blue-500 hover:bg-blue-600 text-white px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6 w-fit">
                     Попробовать бесплатно
                   </Button>
-                  <Button
+                  {/* <Button
                     variant="outline"
                     className="border border-gray-300 text-gray-700 px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6"
                   >
                     Смотреть демо
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
 
@@ -289,7 +300,7 @@ export default function Home() {
                 8000+ пользователей | 135+ сфер бизнеса <br />
                 Рост ваших продаж до 34% за 7 дней
               </p>
-              <div className="flex flex-row gap-3">
+              <div className="flex flex-row gap-3" onClick={openModal}>
                 <Button className="bg-blue-500 hover:bg-blue-600 text-white sm:px-4 md:px-6 sm:py-2 sm:text-xs md:text-sm lg:text-base rounded-md sm:h-7 md:h-8 lg:h-10">
                   Попробовать бесплатно
                 </Button>
@@ -322,36 +333,40 @@ export default function Home() {
             Как это работает
           </h2>
           <div className="grid grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
-            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-                Смотри короткий видео урок
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
+                Смотри короткий видео урок. <br /> Только суть и практика.
+                Каждый урок — конкретный навык.
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-                Практикуйся с AI тренером
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
+                Выполняешь задание — получаешь разбор от AI. <br /> AI-тренер
+                проверит ответ и даст чёткую обратную связь.
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-                Отчет по каждому менеджеру
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
+                Видишь весь процесс обучения. <br /> Вся статистика по каждому
+                сотруднику: что прошёл, как ответил, где ошибся.
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-                Превращай продавцов в профи
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
+                Превращай продавцов в профи. <br /> Получи супер продавца в
+                короткие сроки.
               </p>
             </div>
           </div>
@@ -365,42 +380,41 @@ export default function Home() {
           <AnimatedCourseCards />
         </section>
 
-        {/* How it works */}
         <section className="container mx-auto px-2 py-4 sm:py-6 md:py-8">
           <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
-            Почему KARADA-U?
+            Как это работает
           </h2>
           <div className="grid grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
-            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
                 2000+ уроков <br /> 5000+ приемов
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
                 8000+ пользователей <br /> 135+ сфер бизнеса
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-                Лучший AI тренер на рынке
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
+                Лучший AI тренер
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[80px] xs:h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px]">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base">
-                Самая выгодная цена на рынке
+              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
+                Самая выгодная цена
               </p>
             </div>
           </div>
@@ -468,10 +482,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pricing Plans */}
-        <PricingPlans />
+        <section className="py-12 md:py-16 bg-gray-50" id="pricing">
+          <div className="container mx-auto px-4">
+            <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
+              Стоимость
+            </h2>
+            <PricingPlans />
+          </div>
+        </section>
       </main>
       <Footer />
+
+      <AmoCRMFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        planTitle="Бесплатный старт"
+      />
     </>
   );
 }

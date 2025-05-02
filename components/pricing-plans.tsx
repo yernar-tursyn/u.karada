@@ -14,7 +14,6 @@ export default function PricingPlans() {
     {
       id: 0,
       title: "Соло",
-      badge: "Популярный",
       price: "20,000₸",
       period: "/месяц",
       description: "Идеально для самостоятельного развития",
@@ -29,10 +28,9 @@ export default function PricingPlans() {
     {
       id: 1,
       title: "Команда ",
-      badge: "Стандарт",
-      price: "45,000₸",
+      price: "от 45,000₸",
       period: "/месяц",
-      description: "Save 50% when you chose annual billing",
+      description: "Подходит для обучения и контроля всей команды",
       features: [
         { text: "Полный доступ ко всем курсам", highlight: true },
         { text: "Обратная связь от AI-тренера", highlight: true },
@@ -81,17 +79,12 @@ export default function PricingPlans() {
                   <div className="inline-block px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-[#333] text-[10px] sm:text-sm text-[#6366f1]">
                     {plan.title}
                   </div>
-                  {plan.badge && (
-                    <div className="inline-block px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-[#333] bg-white text-[10px] sm:text-sm ml-1 sm:ml-2">
-                      {plan.badge}
-                    </div>
-                  )}
                 </div>
 
                 {/* Price section - reduced height */}
                 <div className="h-10 sm:h-16">
                   <div className="flex items-baseline">
-                    <span className="text-xl sm:text-4xl lg:text-6xl font-bold">
+                    <span className="text-md sm:text-2xl lg:text-4xl font-bold">
                       {plan.price}
                     </span>
                     <span className="text-gray-400 ml-1 text-[10px] sm:text-sm">
@@ -133,7 +126,7 @@ export default function PricingPlans() {
                         typeof feature === "object" ? feature.text : feature;
 
                       return (
-                        <li key={index} className="flex items-start">
+                        <li key={index} className="flex items-center">
                           <div
                             className={`flex-shrink-0 h-3 w-3 sm:h-6 sm:w-6 rounded-full ${
                               isHighlighted ? "bg-[#6366f1]" : "bg-[#333]"

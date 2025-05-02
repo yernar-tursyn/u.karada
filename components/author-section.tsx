@@ -5,9 +5,9 @@ export default function AuthorSection() {
     <section className="py-8 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="mx-auto">
-          {/* На мобильных - колонка с центрированием, на десктопе - строка */}
-          <div className="flex flex-col items-center md:flex-row md:items-center gap-6 md:gap-8">
-            {/* Фото автора - центрировано на мобильных, слева на десктопе */}
+          {/* Разные стили для мобилки и десктопа */}
+          <div className="flex flex-col items-center md:flex md:flex-row md:justify-center md:items-center gap-6 md:gap-8">
+            {/* Фото автора */}
             <div className="w-48 md:w-72 relative flex-shrink-0 rounded-lg overflow-hidden">
               <Image
                 src="/author-yusup.png"
@@ -18,8 +18,8 @@ export default function AuthorSection() {
               />
             </div>
 
-            {/* Информация об авторе - под изображением на мобильных, справа на десктопе */}
-            <div className="flex-1">
+            {/* Информация об авторе */}
+            <div className="md:max-w-lg">
               <h2 className="text-2xl md:text-3xl font-bold text-black-600 mb-4 md:mb-6 text-center md:text-left">
                 АВТОР - ЮСУП КАРАДА
               </h2>
