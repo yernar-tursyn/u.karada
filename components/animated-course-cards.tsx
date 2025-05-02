@@ -216,21 +216,45 @@ export default function AnimatedStaticCards() {
     },
   ];
 
+  // Мобильная версия карточек
+  if (isMobile) {
+    return (
+      <div className="grid grid-cols-3 gap-1">
+        {courses.map((course) => (
+          <Card
+            key={course.id}
+            className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer w-full"
+          >
+            <div className="flex flex-col justify-center items-center h-full p-1">
+              <div className="text-center mb-1 leading-none  h-[32px]">
+                <span className="font-bold text-[0.6rem] leading-none block">
+                  {course.title}
+                </span>
+              </div>
+              <div className="text-center">
+                <p className="text-[0.5rem]">{course.description}</p>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    );
+  }
+
+  // Десктопная версия карточек (оставляем без изменений)
   return (
     <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1 xs:gap-2 sm:gap-3 md:gap-4 lg:gap-5">
       {courses.map((course) => (
         <Card
           key={course.id}
           className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer transition-all duration-700 h-[90px] xs:h-[105px] sm:h-[120px] md:h-[130px] lg:h-[140px] w-[220px]"
-          onMouseEnter={() => !isMobile && setHoveredCard(course.id)}
-          onMouseLeave={() => !isMobile && setHoveredCard(null)}
+          onMouseEnter={() => setHoveredCard(course.id)}
+          onMouseLeave={() => setHoveredCard(null)}
           style={{
             transform:
-              !isMobile && hoveredCard === course.id
-                ? "translateY(-5px)"
-                : "translateY(0)",
+              hoveredCard === course.id ? "translateY(-5px)" : "translateY(0)",
             boxShadow:
-              !isMobile && hoveredCard === course.id
+              hoveredCard === course.id
                 ? "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
                 : "none",
           }}
@@ -239,9 +263,8 @@ export default function AnimatedStaticCards() {
           <div
             className="absolute inset-0 transition-opacity duration-300 flex flex-col justify-start p-1 xs:p-2 sm:p-3"
             style={{
-              opacity: !isMobile && hoveredCard === course.id ? 0 : 1,
-              pointerEvents:
-                !isMobile && hoveredCard === course.id ? "none" : "auto",
+              opacity: hoveredCard === course.id ? 0 : 1,
+              pointerEvents: hoveredCard === course.id ? "none" : "auto",
             }}
           >
             <CardHeader className="pb-0 pt-0 xs:pb-0 xs:pt-1 sm:pb-1 sm:pt-1 px-1 xs:px-2 sm:px-3 md:px-4 h-[50px]">
@@ -253,46 +276,41 @@ export default function AnimatedStaticCards() {
             </CardHeader>
             {/* Описание отображается всегда */}
             <CardContent className="pt-0 px-1 xs:px-2 sm:px-3 md:px-4">
-              <p className="text-[0.3rem] xs:text-[0.5rem] sm:text-[0.6rem] md:text-xs text-center ">
+              <p className="text-[0.3rem] xs:text-[0.5rem] sm:text-[0.6rem] md:text-xs text-center">
                 {course.description}
               </p>
             </CardContent>
           </div>
 
           {/* Состояние при наведении - только детали курса без заголовка (только для десктопа) */}
-          {!isMobile && (
-            <div
-              className="absolute inset-0 bg-gray-700 flex flex-col justify-center text-white p-1 xs:p-2 sm:p-3 md:p-4 z-10 transition-opacity duration-700"
-              style={{
-                opacity: hoveredCard === course.id ? 1 : 0,
-                pointerEvents: hoveredCard === course.id ? "auto" : "none",
-              }}
-            >
-              <div className="animate-slide-up">
-                <ul className="space-y-0 xs:space-y-0.5 sm:space-y-1">
-                  {course.details.bulletPoints.map((point, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start animate-slide-right"
-                      style={{ animationDelay: `${300 + index * 200}ms` }}
-                    >
-                      <span className="text-white mr-0.5 flex-shrink-0 text-[0.3rem] xs:text-[0.4rem] sm:text-[0.5rem] md:text-xs">
-                        •
+          <div
+            className="absolute inset-0 bg-gray-700 flex flex-col justify-center text-white p-1 xs:p-2 sm:p-3 md:p-4 z-10 transition-opacity duration-700"
+            style={{
+              opacity: hoveredCard === course.id ? 1 : 0,
+              pointerEvents: hoveredCard === course.id ? "auto" : "none",
+            }}
+          >
+            <div className="animate-slide-up">
+              <ul className="space-y-0 xs:space-y-0.5 sm:space-y-1">
+                {course.details.bulletPoints.map((point, index) => (
+                  <li
+                    key={index}
+                    className="flex items-start animate-slide-right"
+                    style={{ animationDelay: `${300 + index * 200}ms` }}
+                  >
+                    <span className="text-white mr-0.5 flex-shrink-0 text-[0.3rem] xs:text-[0.4rem] sm:text-[0.5rem] md:text-xs">
+                      •
+                    </span>
+                    <p className="text-white/90" style={{ fontSize: "0.3rem" }}>
+                      <span className="text-[0.3rem] xs:text-[0.4rem] sm:text-[0.5rem] md:text-[0.65rem]">
+                        {point}
                       </span>
-                      <p
-                        className="text-white/90"
-                        style={{ fontSize: "0.3rem" }}
-                      >
-                        <span className="text-[0.3rem] xs:text-[0.4rem] sm:text-[0.5rem] md:text-[0.65rem]">
-                          {point}
-                        </span>
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </div>
-          )}
+          </div>
         </Card>
       ))}
 
