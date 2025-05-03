@@ -595,21 +595,29 @@ export default function TestimonialsSlider() {
         </div>
       )}
 
-      {/* Индикаторы слайдов для всех устройств */}
-      <div className="flex justify-center mt-2 xs:mt-3 sm:mt-4 md:mt-5 lg:mt-6 gap-0.5 xs:gap-0.5 sm:gap-1">
-        {Array.from({ length: visibleSlidesCount }).map((_, index) => (
-          <button
-            key={index}
-            className={`w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-3 sm:h-3 rounded-full transition-colors cursor-pointer ${
-              index === currentSlide
-                ? "bg-blue-500"
-                : "bg-gray-300 hover:bg-gray-400"
-            }`}
-            onClick={() => goToSlide(index)}
-            aria-label={`Перейти к отзыву ${index + 1}`}
-            aria-current={index === currentSlide ? "true" : "false"}
-          />
-        ))}
+      {/* Индикаторы слайдов */}
+      <div className="flex justify-center mt-2 xs:mt-3 sm:mt-4 md:mt-5 lg:mt-6">
+        {isMobile ? (
+          <div className="text-xs xs:text-sm text-gray-600 font-medium">
+            Страница {currentSlide + 1} из {visibleSlidesCount}
+          </div>
+        ) : (
+          <div className="flex gap-0.5 xs:gap-0.5 sm:gap-1">
+            {Array.from({ length: visibleSlidesCount }).map((_, index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-3 sm:h-3 rounded-full transition-colors cursor-pointer ${
+                  index === currentSlide
+                    ? "bg-blue-500"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+                onClick={() => goToSlide(index)}
+                aria-label={`Перейти к отзыву ${index + 1}`}
+                aria-current={index === currentSlide ? "true" : "false"}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       <style jsx>{`

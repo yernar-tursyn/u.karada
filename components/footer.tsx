@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Twitter, Mail, Phone } from "lucide-react";
+import { Instagram, Mail, Phone, Youtube } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,7 +16,10 @@ export default function Footer() {
               </span>
             </Link> */}
             <p className="text-sm text-gray-500 mt-2">
-              © {currentYear} AI Sales Trainer. Все права защищены.
+              © {currentYear} KARADA Университет Продаж <br /> Все права
+              защищены
+              <br />
+              Договор оферты
             </p>
           </div>
 
@@ -56,14 +59,14 @@ export default function Footer() {
                   className="text-sm text-gray-500 hover:text-blue-600 transition-colors flex items-center"
                 >
                   <Mail className="h-4 w-4 mr-2 flex-shrink-0" />
-                  <span className="break-all">info@aisalestrainer.com</span>
+                  <span className="break-all">info@karada.kz</span>
                 </a>
                 <a
                   href="tel:+77777777777"
                   className="text-sm text-gray-500 hover:text-blue-600 transition-colors flex items-center"
                 >
                   <Phone className="h-4 w-4 mr-2 flex-shrink-0" />
-                  +7 (777) 777-77-77
+                  +7 (705) 271 11 77
                 </a>
               </div>
             </div>
@@ -73,25 +76,18 @@ export default function Footer() {
               <h4 className="font-medium text-gray-700 mb-2">Мы в соцсетях</h4>
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="https://www.youtube.com/channel/UCqaMMY7Jm497AQH_nAQNfow"
                   className="text-gray-400 hover:text-blue-600 transition-colors"
                 >
-                  <Facebook className="h-5 w-5" />
-                  <span className="sr-only">Facebook</span>
+                  <Youtube className="h-5 w-5" />
+                  <span className="sr-only">Instagram</span>
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/yusup.karada/"
                   className="text-gray-400 hover:text-blue-600 transition-colors"
                 >
                   <Instagram className="h-5 w-5" />
                   <span className="sr-only">Instagram</span>
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-blue-600 transition-colors"
-                >
-                  <Twitter className="h-5 w-5" />
-                  <span className="sr-only">Twitter</span>
                 </a>
               </div>
             </div>

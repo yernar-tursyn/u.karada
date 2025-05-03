@@ -225,7 +225,7 @@ export default function AnimatedStaticCards() {
             key={course.id}
             className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer w-full"
           >
-            <div className="flex flex-col justify-center items-center h-full p-1">
+            <div className="flex flex-col justify-start items-center h-full p-1">
               <div className="text-center mb-1 leading-none  h-[32px]">
                 <span className="font-bold text-[0.6rem] leading-none block">
                   {course.title}

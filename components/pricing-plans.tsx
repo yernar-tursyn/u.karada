@@ -126,7 +126,7 @@ export default function PricingPlans() {
                         typeof feature === "object" ? feature.text : feature;
 
                       return (
-                        <li key={index} className="flex items-center">
+                        <li key={index} className="flex items-start">
                           <div
                             className={`flex-shrink-0 h-3 w-3 sm:h-6 sm:w-6 rounded-full ${
                               isHighlighted ? "bg-[#6366f1]" : "bg-[#333]"
@@ -134,13 +134,7 @@ export default function PricingPlans() {
                           >
                             <Check className="h-2 w-2 sm:h-4 sm:w-4 text-white" />
                           </div>
-                          <span
-                            className={`text-[10px] sm:text-sm ${
-                              isHighlighted
-                                ? "px-1 sm:px-2 py-0.5 sm:py-1 rounded"
-                                : ""
-                            }`}
-                          >
+                          <span className="text-[10px] sm:text-sm">
                             {featureText}
                           </span>
                         </li>

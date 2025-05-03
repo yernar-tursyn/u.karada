@@ -449,10 +449,10 @@ export default function Home() {
 
         <section className="container mx-auto px-2 py-4 sm:py-6 md:py-8">
           <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
-            Как это работает
+            Почему KARADA-U?
           </h2>
-          <div className="grid grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px] justify-center">
               <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
                 <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
@@ -460,7 +460,7 @@ export default function Home() {
                 2000+ уроков <br /> 5000+ приемов
               </p>
             </div>
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px] justify-center">
               <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
                 <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
@@ -468,7 +468,7 @@ export default function Home() {
                 8000+ пользователей <br /> 135+ сфер бизнеса
               </p>
             </div>
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px] justify-center">
               <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
                 <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
@@ -476,7 +476,7 @@ export default function Home() {
                 Лучший AI тренер
               </p>
             </div>
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px] justify-center">
               <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
                 <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
