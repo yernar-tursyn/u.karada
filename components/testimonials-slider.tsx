@@ -561,7 +561,7 @@ export default function TestimonialsSlider() {
         </div>
       )}
 
-      {/* Мобильный скролл с 3 карточками */}
+      {/* Мобильный скролл с 1 карточкой */}
       {isMobile && (
         <div
           ref={scrollContainerRef}
@@ -571,19 +571,19 @@ export default function TestimonialsSlider() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className="testimonial-card flex-shrink-0 w-[calc(100vw/3-16px)] snap-center"
+                className="testimonial-card flex-shrink-0 w-[calc(100vw-32px)] snap-center"
                 data-index={index}
               >
-                <Card className="h-full bg-white shadow-md rounded-lg p-2 flex flex-col">
-                  <div className="space-y-1">
-                    <p className="text-gray-700 italic text-[7px] line-clamp-6">
+                <Card className="h-full bg-white shadow-md rounded-lg p-3 flex flex-col">
+                  <div className="space-y-2">
+                    <p className="text-gray-700 italic text-xs line-clamp-6">
                       {testimonial.text}
                     </p>
                     <div>
-                      <h4 className="font-bold text-gray-900 text-[8px]">
+                      <h4 className="font-bold text-gray-900 text-sm">
                         {testimonial.author}
                       </h4>
-                      <p className="text-[6px] text-gray-500">
+                      <p className="text-xs text-gray-500">
                         {testimonial.position}
                       </p>
                     </div>

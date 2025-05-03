@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Play, ListChecks, Bot, BarChart4 } from "lucide-react";
+import {
+  Play,
+  BriefcaseBusiness,
+  BotMessageSquare,
+  CircleDollarSign,
+} from "lucide-react";
 import TestimonialsSlider from "@/components/testimonials-slider";
 import ClientsSlider from "@/components/clients-slider";
 import AnimatedCourseCards from "@/components/animated-course-cards";
@@ -258,11 +263,14 @@ export default function Home() {
               {/* Текст и кнопки */}
               <div className="w-full mb-4">
                 <p className="text-[10px] xs:text-xs text-gray-700 mb-3">
-                  Более 8000 пользователей. <br />
+                  8000+ пользователей | 135+ сфер бизнеса <br />
                   Рост ваших продаж до 34% за 7 дней
                 </p>
                 <div className="flex flex-col xs:flex-row gap-2">
-                  <Button className="bg-blue-500 hover:bg-blue-600 text-white px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6 w-fit">
+                  <Button
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6 w-fit"
+                    onClick={openModal}
+                  >
                     Попробовать
                   </Button>
                   {/* <Button
@@ -452,37 +460,52 @@ export default function Home() {
             Почему KARADA-U?
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px] justify-center">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+            {/* Card 1 */}
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
                 <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
-                2000+ уроков <br /> 5000+ приемов
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px] justify-center">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <Bot className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+              <div className="flex-1 flex items-start">
+                <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
+                  2000+ уроков <br /> 5000+ приемов
+                </p>
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
-                8000+ пользователей <br /> 135+ сфер бизнеса
-              </p>
             </div>
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px] justify-center">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <ListChecks className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+
+            {/* Card 2 */}
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <BriefcaseBusiness className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
-                Лучший AI тренер
-              </p>
+              <div className="flex-1 flex items-start">
+                <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
+                  8000+ пользователей <br /> 135+ сфер бизнеса
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[80px] xs:min-h-[100px] sm:min-h-[120px] md:min-h-[160px] justify-center">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <BarChart4 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+
+            {/* Card 3 */}
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <BotMessageSquare className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
-              <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm overflow-hidden">
-                Самая выгодная цена
-              </p>
+              <div className="flex-1 flex items-start">
+                <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
+                  Лучший AI тренер <br /> на рынке
+                </p>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
+                <CircleDollarSign className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+              </div>
+              <div className="flex-1 flex items-start">
+                <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
+                  Самая выгодная цена <br /> на рынке
+                </p>
+              </div>
             </div>
           </div>
         </section>

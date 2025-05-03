@@ -188,7 +188,7 @@ export default function ClientsSlider({ images }: ClientsSliderProps) {
   return (
     <section className="bg-white py-12 md:py-16">
       <div className="container mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-10">
+        <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
           Клиенты
         </h2>
 

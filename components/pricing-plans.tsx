@@ -8,6 +8,7 @@ import AmoCRMFormModal from "./amocrm-form-modal";
 export default function PricingPlans() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPlanTitle, setSelectedPlanTitle] = useState("");
 
   // Pricing plan data - reduced to 2 plans
   const plans = [
@@ -46,7 +47,8 @@ export default function PricingPlans() {
   ];
 
   // Функция для открытия модального окна с формой
-  const openModal = () => {
+  const openModal = (planTitle: string) => {
+    setSelectedPlanTitle(planTitle);
     setIsModalOpen(true);
   };
 
@@ -101,7 +103,7 @@ export default function PricingPlans() {
                 {/* Button section - reduced margins */}
                 <div className="my-2 sm:my-6">
                   <Button
-                    onClick={openModal}
+                    onClick={() => openModal(plan.title)}
                     className={`w-full py-1 sm:py-4 rounded-md text-[10px] sm:text-sm cursor-pointer ${
                       plan.buttonGlow
                         ? "bg-[#1a1a1a] hover:bg-[#252525] text-white relative overflow-hidden"
@@ -151,7 +153,7 @@ export default function PricingPlans() {
       <AmoCRMFormModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        planTitle="Бесплатный старт"
+        planTitle={selectedPlanTitle}
       />
     </section>
   );
