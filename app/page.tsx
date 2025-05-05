@@ -251,11 +251,11 @@ export default function Home() {
               </h1>
 
               {/* 2. Параграф */}
-              <p className="text-xs sm:text-sm text-gray-700 mb-5 text-start">
-                8000+ пользователей | 135+ сфер бизнеса <br />
-                Рост Ваших продаж до 34% за 7 дней <br />
-                Ваши продавцы станут профессионалами в короткие сроки
-              </p>
+              <ul className="text-xs sm:text-sm text-gray-700 mb-5 text-start list-disc list-inside">
+                <li>8000+ пользователей. 135+ сфер бизнеса.</li>
+                <li>Рост Ваших продаж до 34% за 7 дней.</li>
+                <li>Ваши продавцы станут профессионалами.</li>
+              </ul>
 
               {/* 3. Изображение */}
               <div className="relative w-full max-w-[180px] xs:max-w-[220px] aspect-[5/4] mb-5">
@@ -285,11 +285,11 @@ export default function Home() {
               <h1 className="sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
                 Прокачайте свой отдел продаж с лучшим AI-тренером
               </h1>
-              <p className="sm:text-sm md:text-base text-gray-700 mb-4">
-                8000+ пользователей | 135+ сфер бизнеса <br />
-                Рост Ваших продаж до 34% за 7 дней <br />
-                Ваши продавцы станут профессионалами в короткие сроки
-              </p>
+              <ul className="sm:text-sm md:text-base text-gray-700 mb-4 list-disc list-inside">
+                <li>8000+ пользователей. 135+ сфер бизнеса</li>
+                <li>Рост Ваших продаж до 34% за 7 дней</li>
+                <li>Ваши продавцы станут профессионалами</li>
+              </ul>
               <div className="flex flex-row gap-3" onClick={openModal}>
                 <Button className="bg-blue-500 hover:bg-blue-600 text-white sm:px-4 md:px-6 sm:py-2 sm:text-xs md:text-sm lg:text-base rounded-md sm:h-7 md:h-8 lg:h-10">
                   Попробовать
