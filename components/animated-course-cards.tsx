@@ -32,8 +32,69 @@ export default function AnimatedStaticCards() {
 
   const courses: CourseCard[] = [
     {
+      id: 8,
+      title: "Дожим клиентов",
+      description: "Работающие приёмы дожима и повторных продаж.",
+      color: "from-slate-700/90 to-slate-900/95",
+      details: {
+        bulletPoints: [
+          "1,000+ приёмов дожима любых клиентов",
+          "Готовая программа дожима на 12 месяцев",
+        ],
+      },
+    },
+    {
+      id: 4,
+      title: "Переговоры и закрытие сделки",
+      description: "Проверенные скрипты и техника уверенного закрытия сделки.",
+      color: "from-red-700/90 to-red-900/95",
+      details: {
+        bulletPoints: [
+          "1,000+ приёмов закрытия любых возражений",
+          "Правила закрытия любой сделки",
+        ],
+      },
+    },
+    {
+      id: 6,
+      title: "Холодные звонки",
+      description:
+        "Эффективные приёмы холодного контакта и обработки возражений.",
+      color: "from-indigo-700/90 to-indigo-900/95",
+      details: {
+        bulletPoints: [
+          "1,000+ приёмов холодного звонка любым клиентам",
+          "Продажа Блокиратору, ЛВР и ЛПР",
+        ],
+      },
+    },
+    {
+      id: 3,
+      title: "Эффективная система продаж",
+      description: "Пошаговая система, которая ведёт клиента к сделке.",
+      color: "from-purple-700/90 to-purple-900/95",
+      details: {
+        bulletPoints: [
+          "Алгоритм дорогих продаж",
+          "Ключевые этапы закрытия любых сделок",
+        ],
+      },
+    },
+    {
+      id: 11,
+      title: "Мотивированный Супер Продавец",
+      description: "Вдохновляющие стратегии для продавцов, которые не сдаются.",
+      color: "from-fuchsia-700/90 to-fuchsia-900/95",
+      details: {
+        bulletPoints: [
+          "Супер мотивация на продажи",
+          "10Х рост эффективности продавца!",
+        ],
+      },
+    },
+    {
       id: 1,
-      title: "1. Основы продаж",
+      title: "Основы продаж",
       description:
         "Фундамент мышления, мотивации и системного подхода к профессии.",
       color: "from-emerald-700/90 to-emerald-900/95",
@@ -46,7 +107,7 @@ export default function AnimatedStaticCards() {
     },
     {
       id: 2,
-      title: "2. Психология покупателя",
+      title: "Психология покупателя",
       description: "Понимание и забота — основа успешных продаж.",
       color: "from-teal-600/90 to-teal-800/95",
       details: {
@@ -57,32 +118,8 @@ export default function AnimatedStaticCards() {
       },
     },
     {
-      id: 3,
-      title: "3. Эффективная система продаж",
-      description: "Пошаговая система, которая ведёт клиента к сделке.",
-      color: "from-purple-700/90 to-purple-900/95",
-      details: {
-        bulletPoints: [
-          "Алгоритм дорогих продаж",
-          "Ключевые этапы закрытия любых сделок",
-        ],
-      },
-    },
-    {
-      id: 4,
-      title: "4. Переговоры и закрытие сделки",
-      description: "Проверенные скрипты и техника уверенного закрытия сделки.",
-      color: "from-red-700/90 to-red-900/95",
-      details: {
-        bulletPoints: [
-          "300+ приёмов закрытия любых возражений",
-          "Правила закрытия любой сделки",
-        ],
-      },
-    },
-    {
       id: 5,
-      title: "5. Входящие звонки",
+      title: "Входящие звонки",
       description:
         "Технология обработки входящих звонков с высокой конверсией.",
       color: "from-blue-700/90 to-blue-900/95",
@@ -94,21 +131,8 @@ export default function AnimatedStaticCards() {
       },
     },
     {
-      id: 6,
-      title: "6. Холодные звонки",
-      description:
-        "Эффективные приёмы холодного контакта и обработки возражений.",
-      color: "from-indigo-700/90 to-indigo-900/95",
-      details: {
-        bulletPoints: [
-          "1,000+ приёмов холодного звонка любым клиентам",
-          "Продажа Блокиратору, ЛВР и ЛПР",
-        ],
-      },
-    },
-    {
       id: 7,
-      title: "7. Поиск клиентов",
+      title: "Поиск клиентов",
       description: "Построение клиентской базы для стабильных продаж.",
       color: "from-sky-600/90 to-sky-800/95",
       details: {
@@ -119,20 +143,8 @@ export default function AnimatedStaticCards() {
       },
     },
     {
-      id: 8,
-      title: "8. Дожим клиентов",
-      description: "Работающие приёмы дожима и повторных продаж.",
-      color: "from-slate-700/90 to-slate-900/95",
-      details: {
-        bulletPoints: [
-          "1,000+ приёмов дожима любых клиентов",
-          "Готовая программа дожима на 12 месяцев",
-        ],
-      },
-    },
-    {
       id: 9,
-      title: "9. Супер сервис",
+      title: "Супер сервис",
       description: "Как стать №1 для клиента — на всех этапах взаимодействия.",
       color: "from-gray-700/90 to-gray-900/95",
       details: {
@@ -144,7 +156,7 @@ export default function AnimatedStaticCards() {
     },
     {
       id: 10,
-      title: "10. Интернет лиды",
+      title: "Интернет лиды",
       description: "Закрытие заявок из интернета с высокой конверсией.",
       color: "from-amber-700/90 to-amber-900/95",
       details: {
@@ -155,20 +167,8 @@ export default function AnimatedStaticCards() {
       },
     },
     {
-      id: 11,
-      title: "11. Мотивированный Супер Продавец",
-      description: "Вдохновляющие стратегии для продавцов, которые не сдаются.",
-      color: "from-fuchsia-700/90 to-fuchsia-900/95",
-      details: {
-        bulletPoints: [
-          "Супер мотивация на продажи",
-          "10Х рост эффективности продавца!",
-        ],
-      },
-    },
-    {
       id: 12,
-      title: "12. Коучинг отдела продаж",
+      title: "Коучинг отдела продаж",
       description: "Практический коучинг: от возражений до дожима.",
       color: "from-rose-700/90 to-rose-900/95",
       details: {
@@ -180,7 +180,7 @@ export default function AnimatedStaticCards() {
     },
     {
       id: 13,
-      title: "13. Большие продажи",
+      title: "Большие продажи",
       description: "Интенсив по мощным техникам продаж и достижению целей.",
       color: "from-green-700/90 to-green-900/95",
       details: {
@@ -192,7 +192,7 @@ export default function AnimatedStaticCards() {
     },
     {
       id: 14,
-      title: '14. Тренинг "Дорогие продажи и Дожим"',
+      title: 'Тренинг "Дорогие продажи и Дожим"',
       description: "Запись мощного тренинга: техники, примеры, энергия вживую.",
       color: "from-orange-600/90 to-orange-800/95",
       details: {
@@ -204,7 +204,7 @@ export default function AnimatedStaticCards() {
     },
     {
       id: 15,
-      title: "15. Мастер-классы и экспресс курсы",
+      title: "Мастер-классы и экспресс курсы",
       description: "Формула мышления, которая приводит к росту дохода.",
       color: "from-zinc-700/90 to-zinc-900/95",
       details: {
@@ -226,9 +226,15 @@ export default function AnimatedStaticCards() {
             className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer w-full"
           >
             <div className="flex flex-col justify-start items-center h-full p-1">
-              <div className="text-center mb-1 leading-none  h-[32px]">
-                <span className="font-bold text-[0.6rem] leading-none block">
-                  {course.title}
+              <div className="text-center mb-1 h-[32px] flex items-center justify-center">
+                <span className="font-medium text-[0.6rem] leading-tight h-[2em] flex flex-col items-center justify-center overflow-wrap break-word text-center">
+                  {course.title.split(" ").length === 2
+                    ? course.title.split(" ").map((word, index) => (
+                        <span key={index} className="text-center">
+                          {word}
+                        </span>
+                      ))
+                    : course.title}
                 </span>
               </div>
               <div className="text-center">
@@ -267,10 +273,16 @@ export default function AnimatedStaticCards() {
               pointerEvents: hoveredCard === course.id ? "none" : "auto",
             }}
           >
-            <CardHeader className="pb-0 pt-0 xs:pb-0 xs:pt-1 sm:pb-1 sm:pt-1 px-1 xs:px-2 sm:px-3 md:px-4 h-[50px]">
-              <CardTitle className="font-bold text-center">
-                <span className="text-[0.35rem] xs:text-[0.6rem] sm:text-xs md:text-sm leading-none">
-                  {course.title}
+            <CardHeader className="pb-0 pt-0 xs:pb-0 xs:pt-1 sm:pb-1 sm:pt-1 px-1 xs:px-2 sm:px-3 md:px-4 h-[50px] flex items-center justify-center">
+              <CardTitle className="font-medium text-center">
+                <span className="text-[0.35rem] xs:text-[0.6rem] sm:text-xs md:text-sm leading-tight h-[2em] flex flex-col items-center justify-center overflow-wrap break-word text-center">
+                  {course.title.split(" ").length === 2
+                    ? course.title.split(" ").map((word, index) => (
+                        <span key={index} className="text-center">
+                          {word}
+                        </span>
+                      ))
+                    : course.title}
                 </span>
               </CardTitle>
             </CardHeader>

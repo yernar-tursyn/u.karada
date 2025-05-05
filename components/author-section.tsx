@@ -28,7 +28,7 @@ export default function AuthorSection() {
                 <li className="flex items-center">
                   <span className="text-black-600 mr-2">•</span>
                   <p className="text-xs sm:text-sm md:text-base text-gray-700">
-                    Топовый бизнес консультант. Дорогие Продажи & Дожим
+                    Топовый бизнес тренер. Дорогие Продажи & Дожим
                   </p>
                 </li>
                 <li className="flex items-center">
@@ -40,13 +40,13 @@ export default function AuthorSection() {
                 <li className="flex items-center">
                   <span className="text-black-600 mr-2">•</span>
                   <p className="text-xs sm:text-sm md:text-base text-gray-700">
-                    20+ лет опыта в продажах в США, Европе и Центральной Азии
+                    20+ лет опыта в продажах в СНГ, США, Европе и ЦА
                   </p>
                 </li>
                 <li className="flex items-center">
                   <span className="text-black-600 mr-2">•</span>
                   <p className="text-xs sm:text-sm md:text-base text-gray-700">
-                    Степень Магистра Управления - Чикаго, США / 2007 год
+                    Степень Магистра Управления - Чикаго, США
                   </p>
                 </li>
               </ul>
@@ -57,10 +57,8 @@ export default function AuthorSection() {
               &ldquo;Я сделал дорогостоящие и редкие знания по дорогим продажам
               и дожиму доступными для каждого бизнеса и предпринимателя!
               <br />
-              <br />
               Теперь любой бизнес может и должен делать крутые продажи!&rdquo;
             </blockquote>
-
             <p className="text-right text-xs sm:text-sm md:text-base text-gray-700 font-medium">
               Юсуп Карада
             </p>

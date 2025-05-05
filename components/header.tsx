@@ -64,7 +64,7 @@ export default function Header() {
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
           {/* Логотип */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src="/logo.png"
               alt="AI Sales Trainer"
@@ -73,6 +73,7 @@ export default function Header() {
               className="h-8 md:h-10 w-auto"
               priority
             />
+            <span className="font-bold text-lg text-gray-800">KARADA-U</span>
           </Link>
 
           {/* Десктопная навигация */}

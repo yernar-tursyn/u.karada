@@ -2,12 +2,6 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  Play,
-  BriefcaseBusiness,
-  BotMessageSquare,
-  CircleDollarSign,
-} from "lucide-react";
 import TestimonialsSlider from "@/components/testimonials-slider";
 import ClientsSlider from "@/components/clients-slider";
 import AnimatedCourseCards from "@/components/animated-course-cards";
@@ -180,8 +174,6 @@ export default function Home() {
     "/clients/67.jpg",
     "/clients/68.jpg",
     "/clients/69.jpg",
-    "/clients/BPa.jpg",
-    "/clients/SMa.jpg",
 
     // ll серия
     "/clients/ll001.jpg",
@@ -204,7 +196,6 @@ export default function Home() {
     "/clients/ll09.jpg",
     "/clients/ll10.jpg",
     "/clients/ll11.jpg",
-    "/clients/ll12.jpg",
     "/clients/ll12.png",
     "/clients/ll26041.jpg",
     "/clients/ll26042.jpg",
@@ -264,7 +255,8 @@ export default function Home() {
               <div className="w-full mb-4">
                 <p className="text-[10px] xs:text-xs text-gray-700 mb-3">
                   8000+ пользователей | 135+ сфер бизнеса <br />
-                  Рост ваших продаж до 34% за 7 дней
+                  Рост Ваших продаж до 34% за 7 дней <br />
+                  Ваши продавцы станут профессионалами в короткие сроки
                 </p>
                 <div className="flex flex-col xs:flex-row gap-2">
                   <Button
@@ -286,7 +278,7 @@ export default function Home() {
               <div className="w-full flex justify-center mt-2">
                 <div className="relative w-full max-w-[180px] xs:max-w-[220px] aspect-[5/4]">
                   <Image
-                    src="/ai-trainer.jpeg"
+                    src="/ai-trainer.png"
                     alt="AI тренер"
                     fill
                     className="object-contain"
@@ -306,24 +298,25 @@ export default function Home() {
               </h1>
               <p className="sm:text-sm md:text-base text-gray-700 mb-4">
                 8000+ пользователей | 135+ сфер бизнеса <br />
-                Рост ваших продаж до 34% за 7 дней
+                Рост Ваших продаж до 34% за 7 дней <br />
+                Ваши продавцы станут профессионалами в короткие сроки
               </p>
               <div className="flex flex-row gap-3" onClick={openModal}>
                 <Button className="bg-blue-500 hover:bg-blue-600 text-white sm:px-4 md:px-6 sm:py-2 sm:text-xs md:text-sm lg:text-base rounded-md sm:h-7 md:h-8 lg:h-10">
                   Попробовать
                 </Button>
-                <Button
+                {/* <Button
                   variant="outline"
                   className="border border-gray-300 text-gray-700 sm:px-4 md:px-6 sm:py-2 sm:text-xs md:text-sm lg:text-base rounded-md sm:h-7 md:h-8 lg:h-10"
                 >
                   Смотреть демо
-                </Button>
+                </Button> */}
               </div>
             </div>
             <div className="flex justify-end">
               <div className="relative w-full sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px] aspect-[5/4]">
                 <Image
-                  src="/ai-trainer.jpeg"
+                  src="/ai-trainer.png"
                   alt="AI тренер"
                   fill
                   className="object-contain"
@@ -340,11 +333,13 @@ export default function Home() {
           <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
             Как это работает
           </h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[220px]">
-              <div className="w-10 h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-3">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:grid-cols-4">
+            {/* Карточка 1 */}
+            <div className="flex flex-col items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              {/* Иконка - фиксированная высота */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-2 sm:mb-3">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -363,18 +358,28 @@ export default function Home() {
                   ></path>
                 </svg>
               </div>
-              <h3 className="text-xs sm:text-sm font-medium mb-1 text-center h-[45px]">
-                Сотрудник смотрит короткий видеоурок
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-600 text-center h-[45px]">
-                Только суть и практика. Каждый урок — конкретный навык.
-              </p>
+
+              {/* Заголовок - фиксированная высота */}
+              <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
+                <h3 className="text-xs sm:text-sm font-medium text-center">
+                  Сотрудник смотрит короткий видеоурок
+                </h3>
+              </div>
+
+              {/* Параграф - фиксированная высота */}
+              <div className="h-[80px] sm:h-[100px] flex items-start justify-center w-full">
+                <p className="text-xs sm:text-sm text-gray-600 text-center">
+                  Только суть и практика. Каждый урок — конкретный навык.
+                </p>
+              </div>
             </div>
 
-            <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[220px]">
-              <div className="w-10 h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-3">
+            {/* Карточка 2 */}
+            <div className="flex flex-col items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              {/* Иконка - фиксированная высота */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-2 sm:mb-3">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -387,44 +392,29 @@ export default function Home() {
                   ></path>
                 </svg>
               </div>
-              <h3 className="text-xs sm:text-sm font-medium mb-1 text-center h-[45px]">
-                Выполняет задание — получает разбор от AI
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-600 text-center h-[45px]">
-                AI-тренер проверит ответ и даст чёткую обратную связь: что
-                усилить и как исправить.
-              </p>
-            </div>
 
-            <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[220px]">
-              <div className="w-10 h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-3">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                  ></path>
-                </svg>
+              {/* Заголовок - фиксированная высота */}
+              <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
+                <h3 className="text-xs sm:text-sm font-medium text-center">
+                  Выполняет задание — получает разбор от AI
+                </h3>
               </div>
-              <h3 className="text-xs sm:text-sm font-medium mb-1 text-center h-[45px]">
-                Вы видите весь процесс обучения
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-600 text-center h-[45px]">
-                Вся статистика по каждому сотруднику: что прошёл, как ответил,
-                где ошибся и насколько продвинулся.
-              </p>
+
+              {/* Параграф - фиксированная высота */}
+              <div className="h-[80px] sm:h-[100px] flex items-start justify-center w-full">
+                <p className="text-xs sm:text-sm text-gray-600 text-center">
+                  AI-тренер проверит ответ и даст чёткую обратную связь: что
+                  усилить и как исправить.
+                </p>
+              </div>
             </div>
 
-            <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-[220px]">
-              <div className="w-10 h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-3">
+            {/* Карточка 3 */}
+            <div className="flex flex-col items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              {/* Иконка - фиксированная высота */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-2 sm:mb-3">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -437,12 +427,56 @@ export default function Home() {
                   ></path>
                 </svg>
               </div>
-              <h3 className="text-xs sm:text-sm font-medium mb-1 text-center h-[45px]">
-                Превращайте продавцов в профи
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-600 text-center h-[45px]">
-                Получите супер продавца в короткие сроки.
-              </p>
+
+              {/* Заголовок - фиксированная высота */}
+              <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
+                <h3 className="text-xs sm:text-sm font-medium text-center">
+                  Отработка на практике
+                </h3>
+              </div>
+
+              {/* Параграф - фиксированная высота */}
+              <div className="h-[80px] sm:h-[100px] flex items-start justify-center w-full">
+                <p className="text-xs sm:text-sm text-gray-600 text-center">
+                  Практика приемов и инструментов между сотрудниками, а не на
+                  клиентах
+                </p>
+              </div>
+            </div>
+
+            {/* Карточка 4 */}
+            <div className="flex flex-col items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              {/* Иконка - фиксированная высота */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-2 sm:mb-3">
+                <svg
+                  className="w-4 h-4 sm:w-5 sm:h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                  ></path>
+                </svg>
+              </div>
+
+              {/* Заголовок - фиксированная высота */}
+              <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
+                <h3 className="text-xs sm:text-sm font-medium text-center">
+                  Вы видите весь процесс обучения
+                </h3>
+              </div>
+
+              {/* Параграф - фиксированная высота */}
+              <div className="h-[80px] sm:h-[100px] flex items-start justify-center w-full">
+                <p className="text-xs sm:text-sm text-gray-600 text-center">
+                  Вся статистика по каждому сотруднику: что прошёл, как ответил,
+                  где ошибся и насколько продвинулся.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -450,7 +484,7 @@ export default function Home() {
         {/* Course cards */}
         <section className="container mx-auto px-4 py-12 md:py-16" id="courses">
           <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
-            Курсы
+            ТОПовые курсы
           </h2>
           <AnimatedCourseCards />
         </section>
@@ -459,51 +493,141 @@ export default function Home() {
           <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
             Почему KARADA-U?
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-1 xs:gap-2 sm:gap-4 md:gap-6">
-            {/* Card 1 */}
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <Play className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:grid-cols-4">
+            {/* Карточка 1 */}
+            <div className="flex flex-col items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              {/* Иконка - фиксированная высота */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-2 sm:mb-3">
+                <svg
+                  className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
               </div>
-              <div className="flex-1 flex items-start">
-                <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
+
+              {/* Заголовок - фиксированная высота */}
+              <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
+                <h3 className="text-xs sm:text-sm font-medium text-center">
                   2000+ уроков <br /> 5000+ приемов
+                </h3>
+              </div>
+
+              {/* Параграф - фиксированная высота */}
+              <div className="h-[100px] sm:h-[120px] flex items-start justify-center w-full">
+                <p className="text-xs sm:text-sm text-gray-600 text-center">
+                  Самая большая база знаний по продажам в СНГ
                 </p>
               </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <BriefcaseBusiness className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+            {/* Карточка 2 */}
+            <div className="flex flex-col items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              {/* Иконка - фиксированная высота */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-2 sm:mb-3">
+                <svg
+                  className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 005.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
               </div>
-              <div className="flex-1 flex items-start">
-                <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
-                  8000+ пользователей <br /> 135+ сфер бизнеса
+
+              {/* Заголовок - фиксированная высота */}
+              <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
+                <h3 className="text-xs sm:text-sm font-medium text-center">
+                  8,000+ пользователей <br /> 135+ сфер бизнеса <br /> 35+ стран
+                </h3>
+              </div>
+
+              {/* Параграф - фиксированная высота */}
+              <div className="h-[100px] sm:h-[120px] flex items-start justify-center w-full">
+                <p className="text-xs sm:text-sm text-gray-600 text-center">
+                  Универсальные инструменты подходят для B2B, В2С и B2G!
                 </p>
               </div>
             </div>
 
-            {/* Card 3 */}
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <BotMessageSquare className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+            {/* Карточка 3 */}
+            <div className="flex flex-col items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              {/* Иконка - фиксированная высота */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-2 sm:mb-3">
+                <svg
+                  className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                  />
+                </svg>
               </div>
-              <div className="flex-1 flex items-start">
-                <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
-                  Лучший AI тренер <br /> на рынке
+
+              {/* Заголовок - фиксированная высота */}
+              <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
+                <h3 className="text-xs sm:text-sm font-medium text-center">
+                  Лучший AI тренер на рынке
+                </h3>
+              </div>
+
+              {/* Параграф - фиксированная высота */}
+              <div className="h-[100px] sm:h-[120px] flex items-start justify-center w-full">
+                <p className="text-xs sm:text-sm text-gray-600 text-center">
+                  Автор методики Юсуп Карада. Тренер №1 по продажам и дожиму в
+                  ЦА
                 </p>
               </div>
             </div>
 
-            {/* Card 4 */}
-            <div className="flex flex-col items-center text-center bg-white p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-1 xs:mb-2 sm:mb-3 md:mb-4">
-                <CircleDollarSign className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+            {/* Карточка 4 */}
+            <div className="flex flex-col items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              {/* Иконка - фиксированная высота */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-blue-500 rounded-md text-blue-500 mb-2 sm:mb-3">
+                <svg
+                  className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
               </div>
-              <div className="flex-1 flex items-start">
-                <p className="font-medium text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
-                  Самая выгодная цена <br /> на рынке
+
+              {/* Заголовок - фиксированная высота */}
+              <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
+                <h3 className="text-xs sm:text-sm font-medium text-center">
+                  Лучшая технология по обучению продавцов
+                </h3>
+              </div>
+
+              {/* Параграф - фиксированная высота с уменьшенным шрифтом для длинного текста */}
+              <div className="h-[100px] sm:h-[120px] flex items-start justify-center w-full">
+                <p className="text-xs sm:text-sm text-gray-600 text-center">
+                  Комплекные знания по всем аспектам продаж <br /> Американская
+                  система продаж <br /> Самая доступная цена на рынке
                 </p>
               </div>
             </div>

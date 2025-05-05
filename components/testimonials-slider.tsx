@@ -576,14 +576,14 @@ export default function TestimonialsSlider() {
               >
                 <Card className="h-full bg-white shadow-md rounded-lg p-3 flex flex-col">
                   <div className="space-y-2">
-                    <p className="text-gray-700 italic text-xs line-clamp-6">
+                    <p className="text-gray-700 italic text-[10px] xs:text-xs line-clamp-6">
                       {testimonial.text}
                     </p>
                     <div>
-                      <h4 className="font-bold text-gray-900 text-sm">
+                      <h4 className="font-bold text-gray-900 text-[11px] xs:text-sm">
                         {testimonial.author}
                       </h4>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-[9px] xs:text-xs text-gray-500">
                         {testimonial.position}
                       </p>
                     </div>
@@ -598,7 +598,7 @@ export default function TestimonialsSlider() {
       {/* Индикаторы слайдов */}
       <div className="flex justify-center mt-2 xs:mt-3 sm:mt-4 md:mt-5 lg:mt-6">
         {isMobile ? (
-          <div className="text-xs xs:text-sm text-gray-600 font-medium">
+          <div className="text-[10px] xs:text-xs sm:text-sm text-gray-600 font-medium">
             Страница {currentSlide + 1} из {visibleSlidesCount}
           </div>
         ) : (
