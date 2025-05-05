@@ -15,7 +15,6 @@ interface AmoCRMFormModalProps {
 export default function AmoCRMFormModal({
   isOpen,
   onClose,
-  planTitle,
 }: AmoCRMFormModalProps) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -55,9 +54,7 @@ export default function AmoCRMFormModal({
     >
       <div className="relative w-full max-w-xl md:max-w-2xl lg:max-w-4xl bg-white rounded-lg shadow-xl overflow-hidden">
         <div className="flex justify-between items-center p-4 border-b">
-          <h3 className="text-lg font-medium">
-            {planTitle ? `Заявка на тариф "${planTitle}"` : "Заявка"}
-          </h3>
+          <h3 className="text-lg font-medium">Заявка</h3>
           <Button
             variant="ghost"
             size="icon"
