@@ -247,11 +247,11 @@ export default function Home() {
             <div className="flex flex-col items-center text-center">
               {/* 1. Заголовок */}
               <h1 className="text-lg xs:text-xl font-bold text-gray-900 mb-4">
-                Прокачай свой отдел продаж с лучшим AI-тренером
+                ПРОКАЧАЙТЕ СВОЙ ОТДЕЛ ПРОДАЖ С ЛУЧШИМ AI-ТРЕНЕРОМ
               </h1>
 
               {/* 2. Параграф */}
-              <p className="text-[10px] xs:text-xs text-gray-700 mb-5 text-start">
+              <p className="text-xs sm:text-sm text-gray-700 mb-5 text-start">
                 8000+ пользователей | 135+ сфер бизнеса <br />
                 Рост Ваших продаж до 34% за 7 дней <br />
                 Ваши продавцы станут профессионалами в короткие сроки
@@ -271,7 +271,7 @@ export default function Home() {
 
               {/* 4. Кнопка */}
               <Button
-                className="bg-blue-500 hover:bg-blue-600 text-white px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6 w-fit"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 xs:px-5 py-1.5 xs:py-2 text-lg rounded-md h-8 xs:h-9 w-fit"
                 onClick={openModal}
               >
                 Попробовать
@@ -283,7 +283,7 @@ export default function Home() {
           <div className="hidden sm:grid sm:grid-cols-2 sm:gap-6 md:gap-8 sm:items-center">
             <div className="max-w-xl">
               <h1 className="sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-                Прокачай свой отдел продаж с лучшим AI-тренером
+                Прокачайте свой отдел продаж с лучшим AI-тренером
               </h1>
               <p className="sm:text-sm md:text-base text-gray-700 mb-4">
                 8000+ пользователей | 135+ сфер бизнеса <br />
@@ -391,7 +391,13 @@ export default function Home() {
 
               {/* Параграф - фиксированная высота */}
               <div className="h-[80px] sm:h-[100px] flex items-start justify-center w-full">
-                <p className="text-xs sm:text-sm text-gray-600 text-center">
+                {/* Мобильная версия текста */}
+                <p className="block sm:hidden text-xs text-gray-600 text-center">
+                  AI-тренер проверит ответ и даст чёткую обратную связь
+                </p>
+
+                {/* Десктопная версия текста */}
+                <p className="hidden sm:block sm:text-sm text-gray-600 text-center">
                   AI-тренер проверит ответ и даст чёткую обратную связь: что
                   усилить и как исправить.
                 </p>
@@ -461,7 +467,14 @@ export default function Home() {
 
               {/* Параграф - фиксированная высота */}
               <div className="h-[80px] sm:h-[100px] flex items-start justify-center w-full">
-                <p className="text-xs sm:text-sm text-gray-600 text-center">
+                {/* Мобильная версия текста */}
+                <p className="block sm:hidden text-xs text-gray-600 text-center">
+                  Вся статистика по каждому сотруднику: что прошёл, как ответил
+                  и где ошибся
+                </p>
+
+                {/* Десктопная версия текста */}
+                <p className="hidden sm:block sm:text-sm text-gray-600 text-center">
                   Вся статистика по каждому сотруднику: что прошёл, как ответил,
                   где ошибся и насколько продвинулся.
                 </p>
@@ -510,7 +523,7 @@ export default function Home() {
               </div>
 
               {/* Параграф - фиксированная высота */}
-              <div className="h-[100px] sm:h-[120px] flex items-start justify-center w-full">
+              <div className="h-[60px] sm:h-[120px] flex items-start justify-center w-full">
                 <p className="text-xs sm:text-sm text-gray-600 text-center">
                   Самая большая база знаний по продажам в СНГ
                 </p>
@@ -544,7 +557,7 @@ export default function Home() {
               </div>
 
               {/* Параграф - фиксированная высота */}
-              <div className="h-[100px] sm:h-[120px] flex items-start justify-center w-full">
+              <div className="h-[60px] sm:h-[120px] flex items-start justify-center w-full">
                 <p className="text-xs sm:text-sm text-gray-600 text-center">
                   Универсальные инструменты подходят для B2B, В2С и B2G!
                 </p>
@@ -578,8 +591,14 @@ export default function Home() {
               </div>
 
               {/* Параграф - фиксированная высота */}
-              <div className="h-[100px] sm:h-[120px] flex items-start justify-center w-full">
-                <p className="text-xs sm:text-sm text-gray-600 text-center">
+              <div className="h-[60px] sm:h-[120px] flex items-start justify-center w-full">
+                {/* Мобильная версия текста */}
+                <p className="block sm:hidden text-xs text-gray-600 text-center">
+                  Автор методики Юсуп Карада. Тренер №1 по продажам и дожиму
+                </p>
+
+                {/* Десктопная версия текста */}
+                <p className="hidden sm:block sm:text-sm text-gray-600 text-center">
                   Автор методики Юсуп Карада. Тренер №1 по продажам и дожиму в
                   ЦА
                 </p>
@@ -612,9 +631,15 @@ export default function Home() {
                 </h3>
               </div>
 
-              {/* Параграф - фиксированная высота с уменьшенным шрифтом для длинного текста */}
-              <div className="h-[100px] sm:h-[120px] flex items-start justify-center w-full">
-                <p className="text-xs sm:text-sm text-gray-600 text-center">
+              {/* Параграф - фиксированная высота */}
+              <div className="h-[60px] sm:h-[120px] flex items-start justify-center w-full">
+                {/* Мобильная версия текста */}
+                <p className="block sm:hidden text-xs text-gray-600 text-center">
+                  Комплекные знания по продажам <br /> Американская система
+                </p>
+
+                {/* Десктопная версия текста */}
+                <p className="hidden sm:block sm:text-sm text-gray-600 text-center">
                   Комплекные знания по всем аспектам продаж <br /> Американская
                   система продаж <br /> Самая доступная цена на рынке
                 </p>

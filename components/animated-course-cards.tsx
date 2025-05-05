@@ -193,7 +193,7 @@ export default function AnimatedStaticCards() {
     {
       id: 14,
       title: 'Тренинг "Дорогие продажи и Дожим"',
-      description: "Запись мощного тренинга: техники, примеры, энергия вживую.",
+      description: "Запись мощного тренинга: техники и примеры.",
       color: "from-orange-600/90 to-orange-800/95",
       details: {
         bulletPoints: [
