@@ -58,7 +58,7 @@ export default function PricingPlans() {
   return (
     <section className="py-6 sm:py-10 text-black">
       <div className="container mx-auto px-2 sm:px-4">
-        <div className="max-w-md mx-auto">
+        <div className="max-w-[283px] sm:max-w-md mx-auto">
           <div
             className="rounded-lg overflow-hidden relative transition-all duration-300 p-4 sm:p-8 flex flex-col border border-[#333]"
             style={{
@@ -74,7 +74,7 @@ export default function PricingPlans() {
             <div className="flex flex-col h-full">
               {/* Price section - reduced height */}
               <div className="h-12 sm:h-20">
-                <div className="flex items-baseline">
+                <div className="flex items-baseline justify-center">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-bold">
                     {plan.price}
                   </span>
@@ -144,7 +144,6 @@ export default function PricingPlans() {
           </div>
         </div>
       </div>
-
       <AmoCRMFormModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

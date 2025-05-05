@@ -244,49 +244,38 @@ export default function Home() {
         <section className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 lg:py-20">
           {/* Мобильная версия (скрыта на десктопе) */}
           <div className="block sm:hidden mt-10">
-            {/* Заголовок на всю ширину */}
-            <h1 className="text-lg xs:text-xl font-bold text-gray-900 mb-4">
-              Прокачай свой отдел продаж с лучшим AI-тренером
-            </h1>
+            <div className="flex flex-col items-center text-center">
+              {/* 1. Заголовок */}
+              <h1 className="text-lg xs:text-xl font-bold text-gray-900 mb-4">
+                Прокачай свой отдел продаж с лучшим AI-тренером
+              </h1>
 
-            {/* Контент под заголовком */}
-            <div className="flex items-center">
-              {/* Текст и кнопки */}
-              <div className="w-full mb-4">
-                <p className="text-[10px] xs:text-xs text-gray-700 mb-3">
-                  8000+ пользователей | 135+ сфер бизнеса <br />
-                  Рост Ваших продаж до 34% за 7 дней <br />
-                  Ваши продавцы станут профессионалами в короткие сроки
-                </p>
-                <div className="flex flex-col xs:flex-row gap-2">
-                  <Button
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6 w-fit"
-                    onClick={openModal}
-                  >
-                    Попробовать
-                  </Button>
-                  {/* <Button
-                    variant="outline"
-                    className="border border-gray-300 text-gray-700 px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6"
-                  >
-                    Смотреть демо
-                  </Button> */}
-                </div>
+              {/* 2. Параграф */}
+              <p className="text-[10px] xs:text-xs text-gray-700 mb-5 text-start">
+                8000+ пользователей | 135+ сфер бизнеса <br />
+                Рост Ваших продаж до 34% за 7 дней <br />
+                Ваши продавцы станут профессионалами в короткие сроки
+              </p>
+
+              {/* 3. Изображение */}
+              <div className="relative w-full max-w-[180px] xs:max-w-[220px] aspect-[5/4] mb-5">
+                <Image
+                  src="/ai-trainer.png"
+                  alt="AI тренер"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 480px) 180px, 220px"
+                  priority
+                />
               </div>
 
-              {/* Изображение */}
-              <div className="w-full flex justify-center mt-2">
-                <div className="relative w-full max-w-[180px] xs:max-w-[220px] aspect-[5/4]">
-                  <Image
-                    src="/ai-trainer.png"
-                    alt="AI тренер"
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 480px) 180px, 220px"
-                    priority
-                  />
-                </div>
-              </div>
+              {/* 4. Кнопка */}
+              <Button
+                className="bg-blue-500 hover:bg-blue-600 text-white px-2 xs:px-3 py-0.5 xs:py-1 text-[9px] xs:text-[10px] rounded-md h-5 xs:h-6 w-fit"
+                onClick={openModal}
+              >
+                Попробовать
+              </Button>
             </div>
           </div>
 

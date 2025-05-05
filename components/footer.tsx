@@ -20,8 +20,8 @@ export default function Footer() {
 
           {/* Навигация, контакты и соц сети */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full md:w-auto">
-            {/* Ссылки - первый на мобильных */}
-            <div className="space-y-2 order-1 md:order-none text-center md:text-left">
+            {/* Ссылки - скрыты на мобильных, видны на десктопе */}
+            <div className="hidden md:block space-y-2 md:order-none text-left">
               <h4 className="font-medium text-gray-700 mb-2">Навигация</h4>
               <div className="flex flex-col space-y-2">
                 <Link
