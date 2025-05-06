@@ -598,8 +598,28 @@ export default function TestimonialsSlider() {
       {/* Индикаторы слайдов */}
       <div className="flex justify-center mt-2 xs:mt-3 sm:mt-4 md:mt-5 lg:mt-6">
         {isMobile ? (
-          <div className="text-[10px] xs:text-xs sm:text-sm text-gray-600 font-medium">
-            Страница {currentSlide + 1} из {visibleSlidesCount}
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="icon"
+              className="rounded-full h-6 w-6 flex-shrink-0"
+              onClick={prevSlide}
+              aria-label="Предыдущий отзыв"
+            >
+              <ChevronLeft className="h-3 w-3" />
+            </Button>
+            <div className="text-[10px] xs:text-xs sm:text-sm text-gray-600 font-medium">
+              Страница {currentSlide + 1} из {visibleSlidesCount}
+            </div>
+            <Button
+              variant="outline"
+              size="icon"
+              className="rounded-full h-6 w-6 flex-shrink-0"
+              onClick={nextSlide}
+              aria-label="Следующий отзыв"
+            >
+              <ChevronRight className="h-3 w-3" />
+            </Button>
           </div>
         ) : (
           <div className="flex gap-0.5 xs:gap-0.5 sm:gap-1">

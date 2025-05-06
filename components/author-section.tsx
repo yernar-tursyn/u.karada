@@ -20,7 +20,7 @@ export default function AuthorSection() {
 
             {/* Информация об авторе */}
             <div className="md:max-w-lg">
-              <h3 className="text-xs sm:text-sm md:text-3xl font-bold text-black-600 mb-4 md:mb-6 text-center md:text-left">
+              <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
                 АВТОР - ЮСУП КАРАДА
               </h3>
 
@@ -52,7 +52,8 @@ export default function AuthorSection() {
               </ul>
             </div>
           </div>
-          <div className="flex flex-col mt-6 md:mt-8">
+          {/* Added mx-auto and max-width to compress from both sides */}
+          <div className="flex flex-col mt-6 md:mt-8 mx-auto max-w-2xl">
             <blockquote className="border-l-4 border-black pl-4 italic text-xs sm:text-sm md:text-base text-gray-600 mb-4">
               &ldquo;Я сделал дорогостоящие и редкие знания по дорогим продажам
               и дожиму доступными для каждого бизнеса и предпринимателя!

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
 import AmoCRMFormModal from "./amocrm-form-modal";
 
 export default function PricingPlans() {
@@ -46,7 +45,7 @@ export default function PricingPlans() {
         highlight: true,
       },
     ],
-    buttonText: "Попробовать",
+    buttonText: "Попробовать 3 дня бесплатно",
   };
 
   // Функция для открытия модального окна с формой
@@ -73,12 +72,12 @@ export default function PricingPlans() {
             {/* Card content with reduced heights */}
             <div className="flex flex-col h-full">
               {/* Price section - reduced height */}
-              <div className="h-12 sm:h-20">
+              <div>
                 <div className="flex items-baseline justify-center">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-bold">
                     {plan.price}
                   </span>
-                  <span className="text-gray-400 ml-1 text-[10px] sm:text-sm">
+                  <span className="text-black-400 ml-1 text-[10px] sm:text-sm">
                     {plan.period}
                   </span>
                 </div>
@@ -88,7 +87,7 @@ export default function PricingPlans() {
               <div className="my-4 sm:my-8">
                 <Button
                   onClick={() => openModal("Корпоративный")}
-                  className="w-full py-2 sm:py-5 rounded-md text-[11px] sm:text-sm cursor-pointer bg-blue-500 hover:bg-blue-600 text-white"
+                  className="w-full py-2 sm:py-5 rounded-md text-[12px] sm:text-base cursor-pointer bg-blue-500 hover:bg-blue-600 text-white"
                 >
                   {plan.buttonText}
                 </Button>
@@ -99,8 +98,7 @@ export default function PricingPlans() {
                 <ul className="space-y-2 sm:space-y-6">
                   {plan.features.map((feature, index) => {
                     // Check if feature is an object with highlight property
-                    const isHighlighted =
-                      typeof feature === "object" && feature.highlight;
+
                     const featureText =
                       typeof feature === "object" ? feature.text : feature;
                     const featureSubtext =
@@ -110,15 +108,9 @@ export default function PricingPlans() {
 
                     return (
                       <li key={index} className="flex items-start">
-                        <div
-                          className={`flex-shrink-0 h-3 w-3 sm:h-6 sm:w-6 rounded-full ${
-                            isHighlighted ? "bg-blue-500" : "bg-[#333]"
-                          } flex items-center justify-center mr-1 sm:mr-3 mt-0.5`}
-                        >
-                          <Check className="h-2 w-2 sm:h-4 sm:w-4 text-white" />
-                        </div>
                         <div className="flex flex-col">
-                          <span className="text-[10px] sm:text-sm font-medium">
+                          <span className="text-[12px] sm:text-base font-medium">
+                            <span className="text-black-600 mr-2">•</span>
                             {featureText}
                           </span>
                           {featureSubtext.length > 0 && (
@@ -126,10 +118,9 @@ export default function PricingPlans() {
                               {featureSubtext.map((subtext, subtextIndex) => (
                                 <li
                                   key={subtextIndex}
-                                  className="text-[10px] sm:text-sm text-black-500 flex items-center"
+                                  className="text-[12px] sm:text-base text-black-500 flex items-center"
                                 >
-                                  <span className="inline-block w-1 h-1 bg-black rounded-full mr-1.5"></span>
-                                  {subtext}
+                                  - {subtext}
                                 </li>
                               ))}
                             </ul>

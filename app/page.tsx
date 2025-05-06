@@ -247,11 +247,11 @@ export default function Home() {
             <div className="flex flex-col items-center text-center">
               {/* 1. Заголовок */}
               <h1 className="text-lg xs:text-xl font-bold text-gray-900 mb-4">
-                ПРОКАЧАЙТЕ СВОЙ ОТДЕЛ ПРОДАЖ С ЛУЧШИМ AI-ТРЕНЕРОМ
+                Прокачайте свой отдел продаж с лучшим AI-тренером
               </h1>
 
               {/* 2. Параграф */}
-              <ul className="text-xs sm:text-sm text-gray-700 mb-5 text-start list-disc list-inside">
+              <ul className="text-sm sm:text-base text-gray-700 mb-5 text-start list-disc list-inside">
                 <li>8000+ пользователей. 135+ сфер бизнеса.</li>
                 <li>Рост Ваших продаж до 34% за 7 дней.</li>
                 <li>Ваши продавцы станут профессионалами.</li>
@@ -271,10 +271,10 @@ export default function Home() {
 
               {/* 4. Кнопка */}
               <Button
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 xs:px-5 py-1.5 xs:py-2 text-lg rounded-md h-8 xs:h-9 w-fit"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 xs:px-5 py-1.5 xs:py-2 text-sm rounded-md h-8 xs:h-9 w-fit"
                 onClick={openModal}
               >
-                Попробовать
+                Попробовать 3 дня бесплатно
               </Button>
             </div>
           </div>
@@ -285,14 +285,14 @@ export default function Home() {
               <h1 className="sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
                 Прокачайте свой отдел продаж с лучшим AI-тренером
               </h1>
-              <ul className="sm:text-sm md:text-base text-gray-700 mb-4 list-disc list-inside">
+              <ul className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 mb-4 list-disc list-inside">
                 <li>8000+ пользователей. 135+ сфер бизнеса</li>
                 <li>Рост Ваших продаж до 34% за 7 дней</li>
                 <li>Ваши продавцы станут профессионалами</li>
               </ul>
               <div className="flex flex-row gap-3" onClick={openModal}>
                 <Button className="bg-blue-500 hover:bg-blue-600 text-white sm:px-4 md:px-6 sm:py-2 sm:text-xs md:text-sm lg:text-base rounded-md sm:h-7 md:h-8 lg:h-10">
-                  Попробовать
+                  Попробовать 3 дня бесплатно
                 </Button>
                 {/* <Button
                   variant="outline"
@@ -349,16 +349,24 @@ export default function Home() {
               </div>
 
               {/* Заголовок - фиксированная высота */}
+
               <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
-                <h3 className="text-xs sm:text-sm font-medium text-center">
+                {/* Мобильная версия заголовка */}
+                <h3 className="block sm:hidden text-xs font-medium text-center">
                   Сотрудник смотрит короткий видеоурок
+                </h3>
+
+                {/* Десктопная версия заголовка */}
+                <h3 className="hidden sm:block sm:text-sm font-medium text-center">
+                  Сотрудник ежедневно смотрит короткий видеоурок
                 </h3>
               </div>
 
               {/* Параграф - фиксированная высота */}
               <div className="h-[80px] sm:h-[100px] flex items-start justify-center w-full">
                 <p className="text-xs sm:text-sm text-gray-600 text-center">
-                  Только суть и практика. Каждый урок — конкретный навык.
+                  20 минут в день. Только суть и практика. Каждый урок —
+                  конкретный навык.
                 </p>
               </div>
             </div>
@@ -426,7 +434,7 @@ export default function Home() {
               {/* Заголовок - фиксированная высота */}
               <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
                 <h3 className="text-xs sm:text-sm font-medium text-center">
-                  Отработка на практике
+                  Отработка приемов <br /> на практике
                 </h3>
               </div>
 
@@ -461,7 +469,7 @@ export default function Home() {
               {/* Заголовок - фиксированная высота */}
               <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
                 <h3 className="text-xs sm:text-sm font-medium text-center">
-                  Вы видите весь процесс обучения
+                  Вы контролируете весь <br /> процесс обучения
                 </h3>
               </div>
 
@@ -550,9 +558,16 @@ export default function Home() {
               </div>
 
               {/* Заголовок - фиксированная высота */}
+
               <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
-                <h3 className="text-xs sm:text-sm font-medium text-center">
-                  8,000+ пользователей <br /> 135+ сфер бизнеса <br /> 35+ стран
+                {/* Мобильная версия заголовка */}
+                <h3 className="block sm:hidden text-xs font-medium text-center">
+                  8,000+ юзеров <br /> 35+ стран <br /> 135+ сфер бизнеса
+                </h3>
+
+                {/* Десктопная версия заголовка */}
+                <h3 className="hidden sm:block sm:text-sm font-medium text-center">
+                  8,000+ юзеров / 35+ стран <br /> 135+ сфер бизнеса
                 </h3>
               </div>
 
@@ -586,7 +601,7 @@ export default function Home() {
               {/* Заголовок - фиксированная высота */}
               <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
                 <h3 className="text-xs sm:text-sm font-medium text-center">
-                  Лучший AI тренер на рынке
+                  Лучший AI тренер <br /> на рынке СНГ
                 </h3>
               </div>
 
@@ -626,7 +641,13 @@ export default function Home() {
 
               {/* Заголовок - фиксированная высота */}
               <div className="h-[60px] sm:h-[70px] flex items-start justify-center w-full">
-                <h3 className="text-xs sm:text-sm font-medium text-center">
+                {/* Мобильная версия заголовка */}
+                <h3 className="block sm:hidden text-xs font-medium text-center">
+                  Лучшая технология по обучению продавцов
+                </h3>
+
+                {/* Десктопная версия заголовка */}
+                <h3 className="hidden sm:block sm:text-sm font-medium text-center">
                   Лучшая технология по обучению продавцов
                 </h3>
               </div>
@@ -635,13 +656,13 @@ export default function Home() {
               <div className="h-[60px] sm:h-[120px] flex items-start justify-center w-full">
                 {/* Мобильная версия текста */}
                 <p className="block sm:hidden text-xs text-gray-600 text-center">
-                  Комплексные знания по продажам <br /> Американская система
+                  ТОПовая методика из США <br /> Высшее качество по доступной
+                  цене
                 </p>
 
                 {/* Десктопная версия текста */}
                 <p className="hidden sm:block sm:text-sm text-gray-600 text-center">
-                  Комплексные знания по всем аспектам продаж <br /> Американская
-                  система продаж <br /> Самая доступная цена на рынке
+                  ТОПовая методика из США Высшее качество по доступной цене
                 </p>
               </div>
             </div>
@@ -710,7 +731,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-12 md:py-16 bg-gray-50" id="pricing">
+        <section className="py-12 md:py-16" id="pricing">
           <div className="container mx-auto px-4">
             <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-12 text-center">
               Стоимость

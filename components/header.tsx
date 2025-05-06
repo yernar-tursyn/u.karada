@@ -5,7 +5,6 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AmoCRMFormModal from "@/components/amocrm-form-modal";
 
@@ -70,10 +69,9 @@ export default function Header() {
               alt="AI Sales Trainer"
               width={180}
               height={40}
-              className="h-8 md:h-10 w-auto"
+              className="h-7 md:h-9 w-auto"
               priority
             />
-            <span className="font-bold text-lg text-gray-800">KARADA-U</span>
           </Link>
 
           {/* Десктопная навигация */}
@@ -98,25 +96,30 @@ export default function Header() {
             >
               Тарифы
             </a>
-            <Button
-              size="sm"
-              className="bg-blue-500 hover:bg-blue-600 text-white ml-2 cursor-pointer"
-              onClick={openModal}
+            <a
+              href="https://karadau.kz/login"
+              className="bg-blue-500 hover:bg-blue-600 text-white ml-2 cursor-pointer px-4 py-2 rounded text-sm inline-block"
             >
-              Начать
-            </Button>
+              Вход
+            </a>
           </nav>
 
           {/* Мобильное меню */}
           <div className="md:hidden">
-            <Button
+            {/* <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Меню"
             >
               {isMobileMenuOpen ? <X /> : <Menu />}
-            </Button>
+            </Button> */}
+            <a
+              href="https://karadau.kz/login"
+              className="bg-blue-500 hover:bg-blue-600 text-white ml-2 cursor-pointer px-4 py-2 rounded text-sm inline-block"
+            >
+              Вход
+            </a>
           </div>
         </div>
 
@@ -149,7 +152,7 @@ export default function Header() {
                 className="bg-blue-500 hover:bg-blue-600 text-white w-fit cursor-pointer"
                 onClick={openModal}
               >
-                Начать
+                Вход
               </Button>
             </nav>
           </div>

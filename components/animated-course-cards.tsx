@@ -161,7 +161,7 @@ export default function AnimatedStaticCards() {
       color: "from-amber-700/90 to-amber-900/95",
       details: {
         bulletPoints: [
-          "Увеличение конверсии в 10Х раз",
+          "Увеличение конверсии в 10Х",
           "Правила больших продаж интернет лидам",
         ],
       },
@@ -275,7 +275,7 @@ export default function AnimatedStaticCards() {
           >
             <CardHeader className="pb-0 pt-0 xs:pb-0 xs:pt-1 sm:pb-1 sm:pt-1 px-1 xs:px-2 sm:px-3 md:px-4 h-[50px] flex items-center justify-center">
               <CardTitle className="font-medium text-center">
-                <span className="text-[0.35rem] xs:text-[0.6rem] sm:text-xs md:text-sm leading-tight h-[2em] flex flex-col items-center justify-center overflow-wrap break-word text-center">
+                <span className="text-[0.4rem] xs:text-[0.7rem] sm:text-sm md:text-base leading-tight h-[2em] flex flex-col items-center justify-center overflow-wrap break-word text-center">
                   {course.title.split(" ").length === 2
                     ? course.title.split(" ").map((word, index) => (
                         <span key={index} className="text-center">
@@ -307,15 +307,12 @@ export default function AnimatedStaticCards() {
                 {course.details.bulletPoints.map((point, index) => (
                   <li
                     key={index}
-                    className="flex items-start animate-slide-right"
+                    className="flex items-start animate-slide-right leading-4"
                     style={{ animationDelay: `${300 + index * 200}ms` }}
                   >
-                    <span className="text-white mr-0.5 flex-shrink-0 text-[0.3rem] xs:text-[0.4rem] sm:text-[0.5rem] md:text-xs">
-                      •
-                    </span>
-                    <p className="text-white/90" style={{ fontSize: "0.3rem" }}>
-                      <span className="text-[0.3rem] xs:text-[0.4rem] sm:text-[0.5rem] md:text-[0.65rem]">
-                        {point}
+                    <p className="text-white/90">
+                      <span className="text-[0.35rem] xs:text-[0.45rem] sm:text-[0.55rem] md:text-[0.7rem] leading-0">
+                        • {point}
                       </span>
                     </p>
                   </li>

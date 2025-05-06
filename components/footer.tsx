@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Mail, Phone, Youtube } from "lucide-react";
+import { Instagram, Phone, Youtube } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,8 +13,6 @@ export default function Footer() {
             <p className="text-sm text-gray-500 mt-2">
               © {currentYear} KARADA Университет Продаж <br /> Все права
               защищены
-              <br />
-              Договор оферты
             </p>
           </div>
 
@@ -59,16 +57,12 @@ export default function Footer() {
                 <a
                   href="mailto:info@aisalestrainer.com"
                   className="text-sm text-gray-500 hover:text-blue-600 transition-colors flex items-center justify-center md:justify-start"
-                >
-                  <Mail className="h-4 w-4 mr-2 flex-shrink-0" />
-                  <span className="break-all">info@karada.kz</span>
-                </a>
+                ></a>
               </div>
             </div>
 
             {/* Социальные сети - третий на мобильных */}
             <div className="space-y-2 order-3 md:order-none text-center md:text-left">
-              <h4 className="font-medium text-gray-700 mb-2">Мы в соцсетях</h4>
               <div className="flex justify-center md:justify-start space-x-4">
                 <a
                   href="https://www.youtube.com/channel/UCqaMMY7Jm497AQH_nAQNfow"
