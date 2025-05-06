@@ -635,12 +635,12 @@ export default function Home() {
               <div className="h-[60px] sm:h-[120px] flex items-start justify-center w-full">
                 {/* Мобильная версия текста */}
                 <p className="block sm:hidden text-xs text-gray-600 text-center">
-                  Комплекные знания по продажам <br /> Американская система
+                  Комплексные знания по продажам <br /> Американская система
                 </p>
 
                 {/* Десктопная версия текста */}
                 <p className="hidden sm:block sm:text-sm text-gray-600 text-center">
-                  Комплекные знания по всем аспектам продаж <br /> Американская
+                  Комплексные знания по всем аспектам продаж <br /> Американская
                   система продаж <br /> Самая доступная цена на рынке
                 </p>
               </div>
