@@ -216,14 +216,38 @@ export default function AnimatedStaticCards() {
     },
   ];
 
+  // Функция для определения шахматного порядка
+  const isChessPattern = (index: number) => {
+    const colsPerRow =
+      typeof window === "undefined"
+        ? 3
+        : isMobile
+        ? 3
+        : window.innerWidth >= 1024
+        ? 5
+        : window.innerWidth >= 768
+        ? 4
+        : 3;
+    const colIndex = index % colsPerRow;
+    const rowIndex = Math.floor(index / colsPerRow);
+
+    // Шахматный порядок: (четная строка и четный столбец) или (нечетная строка и нечетный столбец)
+    return (
+      (rowIndex % 2 === 0 && colIndex % 2 === 0) ||
+      (rowIndex % 2 !== 0 && colIndex % 2 !== 0)
+    );
+  };
+
   // Мобильная версия карточек
   if (isMobile) {
     return (
       <div className="grid grid-cols-3 gap-1">
-        {courses.map((course) => (
+        {courses.map((course, index) => (
           <Card
             key={course.id}
-            className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer w-full"
+            className={`border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer w-full ${
+              isChessPattern(index) ? "bg-gray-200" : ""
+            }`}
           >
             <div className="flex flex-col justify-start items-center h-full p-1">
               <div className="text-center mb-1 h-[32px] flex items-center justify-center">
@@ -250,7 +274,7 @@ export default function AnimatedStaticCards() {
   // Десктопная версия карточек (оставляем без изменений)
   return (
     <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1 xs:gap-2 sm:gap-3 md:gap-4 lg:gap-5">
-      {courses.map((course) => (
+      {courses.map((course, index) => (
         <Card
           key={course.id}
           className="border border-gray-200 rounded-lg overflow-hidden relative cursor-pointer transition-all duration-700 h-[90px] xs:h-[105px] sm:h-[120px] md:h-[130px] lg:h-[140px] w-[220px]"
@@ -267,7 +291,9 @@ export default function AnimatedStaticCards() {
         >
           {/* Обычное состояние - только заголовок и описание */}
           <div
-            className="absolute inset-0 transition-opacity duration-300 flex flex-col justify-start p-1 xs:p-2 sm:p-3"
+            className={`absolute inset-0 transition-opacity duration-300 flex flex-col justify-start p-1 xs:p-2 sm:p-3 ${
+              isChessPattern(index) ? "bg-gray-200" : ""
+            }`}
             style={{
               opacity: hoveredCard === course.id ? 0 : 1,
               pointerEvents: hoveredCard === course.id ? "none" : "auto",
