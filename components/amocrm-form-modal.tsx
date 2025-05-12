@@ -67,7 +67,7 @@ export default function AmoCRMFormModal({
         </div>
         <div className="h-[600px] md:h-[700px] lg:h-[800px] w-full">
           <iframe
-            src="https://forms.amocrm.ru/rtwdxzm"
+            src="https://forms.amocrm.ru/rwtcrtl"
             className="w-full h-full border-0"
             title="Форма заявки"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
