@@ -12,7 +12,7 @@ export default function PricingPlans() {
   // Single pricing plan - removed title "Команда"
   const plan = {
     id: 1,
-    price: "от 20,000₸",
+    price: "от 10,000₸",
     period: "/месяц на 1 аккаунт",
     features: [
       { text: "Подписка на команду от 3-х человек", highlight: true },
