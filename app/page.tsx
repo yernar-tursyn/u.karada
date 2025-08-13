@@ -441,8 +441,7 @@ export default function Home() {
               {/* Параграф - фиксированная высота */}
               <div className="h-[80px] sm:h-[100px] flex items-start justify-center w-full">
                 <p className="text-xs sm:text-sm text-gray-600 text-center">
-                  Практика приемов и инструментов между сотрудниками, а не на
-                  клиентах
+                  Практика приемов и инструментов c ИИ тренером, а не на клиентах
                 </p>
               </div>
             </div>
