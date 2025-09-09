@@ -12,8 +12,8 @@ export default function PricingPlans() {
   // Single pricing plan - removed title "Команда"
   const plan = {
     id: 1,
-    price: "от 10,000₸",
-    period: "/месяц на 1 аккаунт",
+    price: "75,000₸ на команду",
+    period: "От",
     features: [
       { text: "Подписка на команду от 3-х человек", highlight: true },
       { text: "Полный доступ ко всем курсам", highlight: true },
@@ -72,13 +72,13 @@ export default function PricingPlans() {
             {/* Card content with reduced heights */}
             <div className="flex flex-col h-full">
               {/* Price section - reduced height */}
-              <div>
-                <div className="flex items-baseline justify-center">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+              <div className="flex items-end gap-2 justify-center">
+                <span className="text-black-400 ml-1 text-xl sm:text-2xl lg:text-3xl">
+                  {plan.period}
+                </span>
+                <div className="flex items-baseline">
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-bold">
                     {plan.price}
-                  </span>
-                  <span className="text-black-400 ml-1 text-[10px] sm:text-sm">
-                    {plan.period}
                   </span>
                 </div>
               </div>
