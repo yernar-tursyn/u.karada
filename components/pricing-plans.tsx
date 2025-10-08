@@ -77,7 +77,7 @@ export default function PricingPlans() {
                   {plan.period}
                 </span>
                 <div className="flex items-baseline">
-                  <span className="text-xl sm:text-2xl lg:text-3xl font-bold">
+                  <span className="text-lg sm:text-[19px] lg:text-3xl font-bold">
                     {plan.price}
                   </span>
                 </div>
